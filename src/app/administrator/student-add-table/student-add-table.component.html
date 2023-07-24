@@ -1,0 +1,33 @@
+<mat-dialog-content class="mat-typography mt-5">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="content">
+              <form  class="content__form" [formGroup]="forms">
+                <div class="content__inputs">
+                  
+                  <mat-form-field>
+                    <mat-label>students</mat-label>
+                  
+                    <mat-select formControlName="students" multiple >
+                      <mat-option *ngFor="let topping of teacherlist" [value]="topping.id">{{topping.name}}</mat-option>
+                    </mat-select>
+                    <span>students</span>
+                  </mat-form-field>
+                  
+                  <small *ngIf="forms.controls['students'].invalid && forms.controls['students'].touched">
+                    <small class="text-danger" *ngIf="forms.controls['students'].errors?.['required']">*students required</small>
+                  </small>
+                </div>
+               
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="Onsubmit()" >{{actionbut}}</button>
+      </mat-dialog-actions> 
+          
+          

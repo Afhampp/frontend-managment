@@ -1,0 +1,30 @@
+.extra{
+    flex:1 1 auto;
+}
+.logo{
+    margin-left: 20px;
+}
+.sidenav-wrapper {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #eee;
+  }
+
+  /* mat-sidenav-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+
+  mat-sidenav{
+    width: 200px;
+    padding: 20px;
+  }
+  button span{
+    margin: 10px;
+  }
+
+  

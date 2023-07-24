@@ -1,0 +1,28 @@
+<mat-dialog-content class="mat-typography mt-5">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="content">
+              <form  class="content__form" [formGroup]="forms">
+                <div class="content__inputs">
+                  <label>
+                    <input required="" type="text" formControlName="subject">
+                    <span> subject</span>
+                  </label>
+                  <small *ngIf="forms.controls['subject'].invalid && forms.controls['subject'].touched">
+                    <small class="text-danger" *ngIf="forms.controls['subject'].errors?.['required']">*subject required</small>
+                    <small class="text-danger" *ngIf="forms.controls['subject'].errors?.['trimError']">*space shouldnt be there</small>
+                  </small>
+                  <small  *ngIf="alreadyexist" class="text-danger">*subject already exists</small>
+                  <small  *ngIf="alreadyexistsubject" class="text-danger">*subject already exists</small>
+                </div>
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="Onsubmit()" >{{buttonaction}}</button>
+      </mat-dialog-actions> 
+          
