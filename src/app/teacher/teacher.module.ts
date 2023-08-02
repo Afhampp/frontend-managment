@@ -18,6 +18,10 @@ import { NgConfirmModule } from 'ng-confirm-box';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { RouterModule } from '@angular/router';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'; 
+import { FormsModule } from '@angular/forms'; 
+
 
 import { TeacherRoutingModule } from './teacher-routing.module';
 import { TeacherLoginComponent } from './teacher-login/teacher-login.component';
@@ -26,6 +30,12 @@ import { TeacherHomeModuleComponent } from './teacher-home-module/teacher-home-m
 import { TeacherDashboradModuleComponent } from './teacher-dashborad-module/teacher-dashborad-module.component';
 import { TeacherShowclassModuleComponent } from './teacher-showclass-module/teacher-showclass-module.component';
 import { TeacherViewstudentModuleComponent } from './teacher-viewstudent-module/teacher-viewstudent-module.component';
+import { TeacherAssignmnentUploadComponent } from './teacher-assignmnent-upload/teacher-assignmnent-upload.component';
+import { TeacherAddAssignmnentComponent } from './teacher-add-assignmnent/teacher-add-assignmnent.component';
+import { TeacherViewsubmittionModuleComponent } from './teacher-viewsubmittion-module/teacher-viewsubmittion-module.component';
+import { TeacherChatModuleComponent } from './teacher-chat-module/teacher-chat-module.component';
+import { TeatchernoteModuleComponent } from './teatchernote-module/teatchernote-module.component';
+import { TeatcheAddRnoteModuleComponent } from './teatche-add-rnote-module/teatche-add-rnote-module.component';
 
 
 @NgModule({
@@ -36,6 +46,12 @@ import { TeacherViewstudentModuleComponent } from './teacher-viewstudent-module/
     TeacherDashboradModuleComponent,
     TeacherShowclassModuleComponent,
     TeacherViewstudentModuleComponent,
+    TeacherAssignmnentUploadComponent,
+    TeacherAddAssignmnentComponent,
+    TeacherViewsubmittionModuleComponent,
+    TeacherChatModuleComponent,
+    TeatchernoteModuleComponent,
+    TeatcheAddRnoteModuleComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +70,9 @@ import { TeacherViewstudentModuleComponent } from './teacher-viewstudent-module/
     MatInputModule,
     NgConfirmModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
     RouterModule,
   ]
 })

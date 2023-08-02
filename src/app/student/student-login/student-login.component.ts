@@ -43,7 +43,7 @@ export class StudentLoginComponent implements OnInit {
           
           const collection=JSON.stringify(value)
           sessionStorage.setItem('student',collection)
-          this.router.navigate(['/teacher/home'])
+          this.router.navigate(['/home'])
           this.loginform.reset()
         }
         else{

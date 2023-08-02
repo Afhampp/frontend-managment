@@ -1,0 +1,22 @@
+<mat-dialog-content class="mat-typography mt-5">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="content">
+          <form class="content__form" [formGroup]="forms" enctype="multipart/form-data">
+            <div class="content__inputs">
+              <label>
+                <input type="file" formControlName="file"  (change)="onFileSelected($event)" required>
+              </label>
+              <small class="text-danger" *ngIf="notpdf">This file is not pdf</small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="Onsubmit()">save</button>
+  </mat-dialog-actions>
+  

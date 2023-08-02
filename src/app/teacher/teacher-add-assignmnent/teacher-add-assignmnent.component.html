@@ -1,0 +1,58 @@
+<mat-dialog-content class="mat-typography mt-5">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="content">
+          <form class="content__form" [formGroup]="forms" enctype="multipart/form-data">
+            <div class="content__inputs">
+              <mat-form-field appearance="outline">
+                <mat-label>Assignment</mat-label>
+                <input matInput placeholder="Placeholder" type="text" formControlName="name">
+                <mat-hint *ngIf="forms.controls['name'].invalid && forms.controls['name'].touched">
+                  <mat-hint class="text-danger" *ngIf="forms.controls['name'].errors?.['required']">*Name required</mat-hint>
+                  <mat-hint class="text-danger" *ngIf="forms.controls['name'].errors?.['trimError']">*Space should not be there</mat-hint>
+                </mat-hint>
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Class</mat-label>
+                <mat-select formControlName="class">
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping.id">{{ topping.name }}</mat-option>
+                </mat-select>
+                <mat-hint *ngIf="forms.controls['class'].invalid && forms.controls['class'].touched">
+                  <mat-hint class="text-danger" *ngIf="forms.controls['class'].errors?.['required']">*Class required</mat-hint>
+                </mat-hint>
+              </mat-form-field>
+              
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Choose a date (From)</mat-label>
+                <input matInput [matDatepicker]="fromPicker" formControlName="from">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+                <mat-datepicker #fromPicker></mat-datepicker>
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Choose a date (To)</mat-label>
+                <input matInput [matDatepicker]="toPicker" formControlName="to">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+                <mat-datepicker #toPicker></mat-datepicker>
+              </mat-form-field>
+  
+              <label>
+                <input type="file" formControlName="file"  (change)="onFileSelected($event)" required>
+              </label>
+              <small class="text-danger" *ngIf="notpdf">This file is not pdf</small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="Onsubmit()"> {{ actionbut }}</button>
+  </mat-dialog-actions>
+  

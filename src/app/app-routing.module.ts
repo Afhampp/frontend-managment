@@ -5,7 +5,7 @@ import { TeacherLoginComponent } from './teacher/teacher-login/teacher-login.com
 
 
 const routes: Routes = [
-  {path:'',component:StudentLoginComponent},
+  {path:'',loadChildren:()=>import('./student/student.module').then(m=>m.StudentModule)},
   {path:'teacher',loadChildren:()=>import('./teacher/teacher.module').then(m=>m.TeacherModule)},
   {path:'administrator',loadChildren:()=>import('./administrator/administrator.module').then(m=>m.AdministratorModule)},
 

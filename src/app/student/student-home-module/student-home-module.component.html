@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="nav.toggle()"><mat-icon>menu</mat-icon></button>
+    <div class="logo">Logo</div>
+    <div class="extra"></div>
+    <button mat-icon-button (click)="singout()"><mat-icon>person</mat-icon></button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-wrapper">
+    <mat-sidenav #nav opened mode="side">
+        <a [routerLink]="['dasboard']" color="primary">
+            <button mat-button>
+                <mat-icon>home</mat-icon>
+                <span>dasborad</span>
+            </button>
+        </a>
+        <a [routerLink]="['showclass']" color="primary">
+            <button mat-button>
+                <mat-icon>person</mat-icon>
+                <span>class</span>
+            </button>
+        </a>
+        <a [routerLink]="['dasboard']" color="primary">
+            <button mat-button>
+                <mat-icon>person_add</mat-icon>
+                <span>assignmnet</span>
+            </button>
+            
+        </a>
+        <a [routerLink]="['chatstudent']" color="primary">
+            <button mat-button>
+                <mat-icon>home</mat-icon>
+                <span>message</span>
+            </button>
+        </a>
+        <a [routerLink]="['notes']" color="primary">
+            <button mat-button>
+                <mat-icon>home</mat-icon>
+                <span>notes</span>
+            </button>
+        </a>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
