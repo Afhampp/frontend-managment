@@ -29,6 +29,8 @@ import { StudentDashboardModuleComponent } from './student-dashboard-module/stud
 import { StudentAddasignmentModuleComponent } from './student-addasignment-module/student-addasignment-module.component';
 import { StudetnchatModuleComponent } from './studetnchat-module/studetnchat-module.component';
 import { StudentNoteModuleComponent } from './student-note-module/student-note-module.component';
+import { StudentAttendaceComponent } from './student-attendace/student-attendace.component';
+import { StudentSheduleModuleComponent } from './student-shedule-module/student-shedule-module.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { StudentNoteModuleComponent } from './student-note-module/student-note-m
     StudentDashboardModuleComponent,
     StudentAddasignmentModuleComponent,
     StudetnchatModuleComponent,
-    StudentNoteModuleComponent
+    StudentNoteModuleComponent,
+    StudentAttendaceComponent,
+    StudentSheduleModuleComponent
   ],
   imports: [
     CommonModule,

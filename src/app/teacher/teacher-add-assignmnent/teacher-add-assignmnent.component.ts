@@ -91,6 +91,7 @@ export class TeacherAddAssignmnentComponent implements OnInit {
           formDataToSend.append('file', fileValue);
           formDataToSend.append('from', this.forms.value.from);
           formDataToSend.append('to', this.forms.value.to);
+          console.log(formDataToSend)
           this.serivce.assigmentquestion(formDataToSend).subscribe((value) => {
             if (value.status === 'success') {
               this.confirmwrong = false;

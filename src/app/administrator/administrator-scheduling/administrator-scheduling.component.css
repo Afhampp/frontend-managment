@@ -1,0 +1,67 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 10%;
+  }
+  .added{
+    margin-top: 20px;
+    margin-right: 2px;
+    display: flex;
+    justify-content: right;
+  }  
+  
+  /* Custom styles for the "Day/Time" column header */
+  .day-time-header {
+    font-weight: bold;
+    background-color: #f2f2f2;
+
+  }
+  
+  /* Custom styles for the "Day/Time" column data cells */
+  table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+ 
+  
+  .added {
+    margin-top: 20px;
+    margin-right: 2px;
+    display: flex;
+    justify-content: right;
+  }
+  
+  /* Custom styles for the "Day/Time" column header */
+  .day-time-header {
+    font-weight: bold;
+    background-color: #f2f2f2;
+  }
+  
+  /* Custom styles for the "Day/Time" column data cells */
+  .day-time-cell {
+    font-weight: bold;
+  }
+  
+  /* Custom styles for the time headers */
+  
+  
+  /* Custom styles for the data rows */
+  
+  
+  
+  /* Custom styles for the time headers */
+  
+  /* Custom styles for the data rows */
+ 

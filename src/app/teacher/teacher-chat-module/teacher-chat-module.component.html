@@ -5,6 +5,9 @@
       <div class="nav-link" *ngFor="let student of allStudentsData" (click)="sendMessageToStudent(student)">
         {{ student.name }}
       </div>
+      <div class="nav-link" *ngFor="let group of groups" (click)="sendMessageToGroup(group)">
+        {{ group.classname }}
+      </div>
     </nav>
   </div>
   
@@ -14,6 +17,7 @@
     <div class="chat-header">
       <h2>Chat</h2>
       <h3 *ngIf="selectedStudent" class="selected-student">{{ selectedStudent.name }}</h3>
+      <h3 *ngIf="selectedGroup" class="selected-student">{{ selectedGroup.classname }}</h3>
     </div>
     <div class="chat-messages">
       <div *ngFor="let message of allMessages" class="message-container">
@@ -24,11 +28,28 @@
           </div>
         </div>
       </div>
+      <div *ngFor="let message of groupMessages" class="message-container">
+        <div [ngClass]="{'left-side': message.sender === teacherName, 'right-side': message.sender !== teacherName}">
+          <span  *ngIf="message.sender!=teacherName" class="message-time">{{ message.sender}}</span>
+          <div class="message-content">{{ message.content }}</div>
+          
+          <div class="user-info">
+           
+            <span class="message-time">{{ message.timestamp | date: 'hh:mm a' }}</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="chat-input" *ngIf="selectedStudent">
       <div class="input-container">
         <input type="text" [(ngModel)]="messageInput" placeholder="Type your message">
         <button (click)="sendMessage()">Send</button>
+      </div>
+    </div>
+    <div class="chat-input" *ngIf="selectedGroup">
+      <div class="input-container">
+        <input type="text" [(ngModel)]="messageInput" placeholder="Type your message">
+        <button (click)="sendGroupMessage()">Send</button>
       </div>
     </div>
   </div>

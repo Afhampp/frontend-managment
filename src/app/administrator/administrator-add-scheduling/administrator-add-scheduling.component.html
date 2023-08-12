@@ -1,0 +1,66 @@
+
+<mat-dialog-content class="mat-typography mt-5">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="content">
+                <h3>{{heading}}</h3>
+              <form  class="content__form" [formGroup]="forms">
+                <div class="content__inputs">
+                    <mat-form-field>
+                        <mat-label>9:00-10:00</mat-label>
+                      
+                        <mat-select formControlName="9:00-11:00"  >
+                          <mat-option *ngFor="let topping of teacherlist" [value]="topping.subject">{{topping.subject}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      
+                      <small *ngIf="forms.controls['9:00-11:00'].invalid && forms.controls['9:00-11:00'].touched">
+                        <small class="text-danger" *ngIf="forms.controls['9:00-11:00'].errors?.['required']">*9:00-10:00 required</small>
+                      </small>
+                      <mat-form-field>
+                        <mat-label>11:30-1:30</mat-label>
+                      
+                        <mat-select formControlName="11:30-1:30"  >
+                          <mat-option *ngFor="let topping of teacherlist" [value]="topping.subject">{{topping.subject}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      
+                      <small *ngIf="forms.controls['11:30-1:30'].invalid && forms.controls['11:30-1:30'].touched">
+                        <small class="text-danger" *ngIf="forms.controls['11:30-1:30'].errors?.['required']">*11:30-1:30 required</small>
+                      </small>
+                      <mat-form-field>
+                        <mat-label>2:30-4:00</mat-label>
+                      
+                        <mat-select formControlName="2:30-4:00"  >
+                          <mat-option *ngFor="let topping of teacherlist" [value]="topping.subject">{{topping.subject}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      
+                      <small *ngIf="forms.controls['2:30-4:00'].invalid && forms.controls['2:30-4:00'].touched">
+                        <small class="text-danger" *ngIf="forms.controls['2:30-4:00'].errors?.['required']">*2:30-4:00 required</small>
+                      </small>
+                      <mat-form-field>
+                        <mat-label>4:00-6:00</mat-label>
+                      
+                        <mat-select formControlName="4:00-6:00"  >
+                          <mat-option *ngFor="let topping of teacherlist" [value]="topping.subject">{{topping.subject}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      
+                      <small *ngIf="forms.controls['4:00-6:00'].invalid && forms.controls['4:00-6:00'].touched">
+                        <small class="text-danger" *ngIf="forms.controls['4:00-6:00'].errors?.['required']">*4:00-6:00 required</small>
+                      </small>
+                </div>
+               
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="Onsubmit()" >save</button>
+      </mat-dialog-actions> 
+          
+          

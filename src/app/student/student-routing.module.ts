@@ -5,6 +5,8 @@ import { StudentHomeModuleComponent } from './student-home-module/student-home-m
 import { StudentDashboardModuleComponent } from './student-dashboard-module/student-dashboard-module.component';
 import { StudetnchatModuleComponent } from './studetnchat-module/studetnchat-module.component';
 import { StudentNoteModuleComponent } from './student-note-module/student-note-module.component';
+import { StudentAttendaceComponent } from './student-attendace/student-attendace.component';
+import { StudentSheduleModuleComponent } from './student-shedule-module/student-shedule-module.component';
 
 
 const routes: Routes = [
@@ -13,7 +15,9 @@ const routes: Routes = [
     {path:'',redirectTo:"dasboard",pathMatch:"full"},
     {path:'dasboard',component:StudentDashboardModuleComponent},
     {path:'chatstudent',component:StudetnchatModuleComponent},
-    {path:'notes',component:StudentNoteModuleComponent}
+    {path:'notes',component:StudentNoteModuleComponent},
+    {path:'attendace',component:StudentAttendaceComponent},
+    {path:'shedule',component:StudentSheduleModuleComponent}
   ]}
 ];
 

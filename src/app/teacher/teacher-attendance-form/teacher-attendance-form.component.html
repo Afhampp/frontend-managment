@@ -1,0 +1,33 @@
+<mat-dialog-content class="mat-typography mt-5">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="content">
+              <form  class="content__form" [formGroup]="forms">
+                <div class="content__inputs">
+                  
+                  <mat-form-field>
+                    <mat-label>teachers</mat-label>
+                  
+                    <mat-select formControlName="status" >
+                      <mat-option value="present">present</mat-option>
+                      <mat-option value="absent">absent</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+                  <small *ngIf="forms.controls['status'].invalid && forms.controls['status'].touched">
+                    <small class="text-danger" *ngIf="forms.controls['status'].errors?.['required']">*status required</small>
+                  </small>
+                </div>
+               
+                <small *ngIf="confirmwrong">already attendace taken at this period</small>
+              </form>
+            </div>
+          </div>
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="Onsubmit()" >save</button>
+      </mat-dialog-actions> 
+          
+          

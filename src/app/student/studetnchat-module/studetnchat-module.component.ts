@@ -18,6 +18,13 @@ interface teacher {
   studentid?:string
 }
 
+interface Group {
+  _id: string;
+  name: string;
+  selected?:string
+  studentid?:string
+}
+
 @Component({
   selector: 'app-studetnchat-module',
   templateUrl: './studetnchat-module.component.html',
@@ -26,10 +33,13 @@ interface teacher {
 export class StudetnchatModuleComponent implements OnInit {
   public messageInput: string = '';
 public messages: ChatMessage[] = [];
-public stundetName: string = ''; // This will be set after fetching the teacher's data
+public stundetName: string = ''; 
 public allStudentsData: teacher[] = [];
 public selectedStudent: teacher | null = null;
-public allMessages: ChatMessage[] = []; // Add this line to declare the allMessages array
+public allMessages: ChatMessage[] = []; 
+public groups:Group[]= [];
+public selectedGroup: Group| null = null;
+public groupMessages: ChatMessage[] = [];
 studentid!: string;
 
 
@@ -46,6 +56,7 @@ studentid!: string;
         this.studentid = data.studentid;
         this.stundetName = data.studentname;
         this.allStudentsData = data.teachersData;
+        this.groups=data.classes
       },
       (error) => {
         console.error('Error fetching teacher data:', error);
@@ -56,6 +67,17 @@ studentid!: string;
       this.chatService.sendfromserver().subscribe((message:any)=>{
         this.allMessages=message
       })
+
+      this.chatService.groupselect().subscribe((message:any)=>{
+
+        this.groupMessages=message
+      })
+  
+      this.chatService.onGroupChatMessage().subscribe((message: any) => {
+        console.log(message)
+         
+          this.groupMessages=message
+      });
     // Listen for incoming chat messages from the server
     
 }
@@ -116,6 +138,45 @@ studentid!: string;
         }
       );
     }
+  }
+
+  sendMessageToGroup(group:Group){
+    if (!this.selectedGroup || this.selectedGroup._id!== group._id) {
+      this.selectedStudent=null
+      group.studentid = this.studentid;
+      this.selectedGroup = group;
+      console.log(this.selectedGroup)
+  
+      // Emit the "select-student" event instead of "chat-message"
+      this.chatService.selectgroupforstudent(this.selectedGroup).subscribe(
+        () => {
+          // Do something after the se
+        },
+        (error) => {
+          console.error('Error sending select-student event:', error);
+        }
+      );
+    }
+  }
+
+  public sendGroupMessage() {
+    const newMessage: ChatMessage = {
+      sender: this.stundetName,
+      senderid: this.studentid,
+      timestamp: new Date(),
+      content: this.messageInput,
+     receiver:this.selectedGroup?._id
+    };
+    console.log(newMessage)
+
+    this.chatService.sendGroupChatstudent(newMessage).subscribe(
+      () => {
+        this.messageInput = '';
+      },
+      (error) => {
+        console.error('Error sending group message:', error);
+      }
+    );
   }
   
 

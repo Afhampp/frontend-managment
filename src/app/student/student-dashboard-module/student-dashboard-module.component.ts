@@ -19,7 +19,7 @@ import { StudentServiceService } from 'src/app/service/student-service.service';
   styleUrls: ['./student-dashboard-module.component.css']
 })
 export class StudentDashboardModuleComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'teacher','from', 'to', 'file','subfile','submittion'];
+  displayedColumns: string[] = ['name', 'teacher','from', 'to', 'mark','file','subfile','submittion'];
   dataSource!: MatTableDataSource<any>;
   studentid!:string
 
@@ -65,6 +65,7 @@ export class StudentDashboardModuleComponent implements OnInit {
   getteachervalue() {
     this.serivce.getassignemnt().subscribe({
       next: (value) => {
+        console.log(value)
         console.log(value.getdata);
         console.log(this.studentid);
   

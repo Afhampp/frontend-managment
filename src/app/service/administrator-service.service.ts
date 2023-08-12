@@ -15,14 +15,17 @@ export class AdministratorServiceService {
     return this.http.post<logindata>(this.url+'login',data)
   }
 
+  getcount():Observable<any>{
+  
+    return this.http.get<any>(this.url+'getcount')
+  }
+
   teacheraddd(data:any):Observable<any>{
     return this.http.post<any>(this.url+'addteacher',data)
   }
   getteacher():Observable<any>{
-    const item = sessionStorage.getItem('admin');
-    const token = item ? JSON.parse(item).token : null; 
-  
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    const userType = 'admin'
+    const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
     return this.http.get<any>(this.url+'getteacher',requestOptions)
   }
@@ -85,5 +88,12 @@ export class AdministratorServiceService {
   }
   removestudent(data:any,id:any):Observable<any>{
     return this.http.put<any>(this.url+'removestudent/'+id,data)
+  }
+  getclassschedule(id:any):Observable<any>{
+    return this.http.get<any>(this.url+'getclassschedule/'+id)
+  }
+
+  updateshedule(data:any,id:any):Observable<any>{
+    return this.http.put<any>(this.url+'updateschedule/'+id,data)
   }
 }

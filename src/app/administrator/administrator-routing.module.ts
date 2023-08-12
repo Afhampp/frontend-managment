@@ -8,18 +8,21 @@ import { AdministratorClassComponent } from './administrator-class/administrator
 import { TeacherViewTableComponent } from './teacher-view-table/teacher-view-table.component';
 import { StudentViewTableComponent } from './student-view-table/student-view-table.component';
 import { AdministratorSubjectComponent } from './administrator-subject/administrator-subject.component';
+import { AdministratorSchedulingComponent } from './administrator-scheduling/administrator-scheduling.component';
+import { AdministartorDashboardComponent } from './administartor-dashboard/administartor-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent}, 
   { path: 'adminhome', component: AdministratorHomeComponent, children: [
-    { path: '', redirectTo: 'adminteacher', pathMatch: 'full' }, // Redirect to dashboard by default
-    // { path: 'dashboard', component: DashboardComponent },
+    { path: '', redirectTo: 'adminteacher', pathMatch: 'full' }, 
+    { path: 'dashboard', component: AdministartorDashboardComponent },
     { path: 'adminteacher', component: AdministratorTeacherComponent },
     { path: 'adminstudent', component: SudentTableAdministratorComponent },
     { path: 'adminclass', component: AdministratorClassComponent },
     { path:'adminsubject',component:AdministratorSubjectComponent},
     { path: 'adminclassview/:id', component: TeacherViewTableComponent},
     { path: 'adminclassaddstudent/:id', component: StudentViewTableComponent},
+    { path:'adminclassaddschedule/:id',component: AdministratorSchedulingComponent}
   ]},
 ];
 

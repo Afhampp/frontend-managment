@@ -15,10 +15,8 @@ export class TeacherServiceService {
     return this.http.post<any>(this.url+"login",data)
   }
   getclasses():Observable<any>{
-    const item = sessionStorage.getItem('teacher');
-    const token = item ? JSON.parse(item).token : null; 
-  
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    const userType = 'teacher'
+    const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
     return this.http.get<any>(this.url+"getclasses",requestOptions)
   }
@@ -26,18 +24,15 @@ export class TeacherServiceService {
     return this.http.get<any>(this.url+'getstuentfromclass/'+id)
   }
   assigmentquestion(data:any):Observable<any>{
-    const item = sessionStorage.getItem('teacher');
-    const token = item ? JSON.parse(item).token : null; 
-  
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+ 
+    const userType = 'teacher'
+    const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
     return this.http.post<any>(this.url+"assigemntquestion",data,requestOptions)
   }
   showassigment():Observable<any>{
-    const item = sessionStorage.getItem('teacher');
-    const token = item ? JSON.parse(item).token : null; 
-  
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    const userType = 'teacher'
+    const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
     return this.http.get<any>(this.url+"showassigment",requestOptions)
   }
@@ -57,28 +52,22 @@ export class TeacherServiceService {
     return this.http.get<any>(this.url+'getassigmentsubmitted/'+id)
   }
   getteacherid():Observable<any>{
-    const item = sessionStorage.getItem('teacher');
-    const token = item ? JSON.parse(item).token : null; 
-  
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    const userType = 'teacher'
+    const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
     return this.http.get<any>(this.url+'getteacherid',requestOptions)
   }
 
   shownotes():Observable<any>{
-    const item = sessionStorage.getItem('teacher');
-    const token = item ? JSON.parse(item).token : null; 
-  
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    const userType = 'teacher'
+    const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
     return this.http.get<any>(this.url+"shownotes",requestOptions)
   }
 
   notessubmittion(data:any):Observable<any>{
-    const item = sessionStorage.getItem('teacher');
-    const token = item ? JSON.parse(item).token : null; 
-  
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    const userType = 'teacher'
+    const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
     return this.http.post<any>(this.url+"notesubmittion",data,requestOptions)
   }
@@ -88,5 +77,36 @@ export class TeacherServiceService {
   }
   deletenotes(id:any):Observable<any>{
     return this.http.delete<any>(this.url+'deletenotes/'+id)
+  }
+
+  getattendacedata(id:any):Observable<any>{
+    const userType = 'teacher'
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.get<any>(this.url+'getattendancedata/'+id,requestOptions)
+  }
+  addattendace(data:any):Observable<any>{
+
+    return this.http.put<any>(this.url+'addattendace',data)
+  }
+  getattendace(rowDataid: any, studentId: string): Observable<any> {
+    const userType = 'teacher';
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+  
+    // Include both parameters in the URL
+    return this.http.get<any>(`${this.url}getattedancedate/${rowDataid}?studentId=${studentId}`, requestOptions);
+  }
+  updateattendace(data:any):Observable<any>{
+
+    return this.http.put<any>(this.url+'updateattendace',data)
+  }
+
+  updatemark(data:any):Observable<any>{
+
+    const userType = 'teacher';
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.put<any>(this.url+'updatemark',data,requestOptions)
   }
 }

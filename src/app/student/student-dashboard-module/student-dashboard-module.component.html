@@ -30,6 +30,16 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> expire in </th>
                 <td mat-cell *matCellDef="let row"> {{row.to |date}} </td>
               </ng-container>
+              <ng-container matColumnDef="mark">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> mark</th>
+                <td mat-cell *matCellDef="let row">
+                  <!-- Loop through each submission and display the mark -->
+                  <ng-container *ngFor="let submission of row.submittion">
+                    {{ submission.mark }}
+                  </ng-container>
+                </td>
+              </ng-container>
+              
               <ng-container matColumnDef="file">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Question </th>
                 <td mat-cell *matCellDef="let row">

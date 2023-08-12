@@ -36,6 +36,16 @@ import { TeacherViewsubmittionModuleComponent } from './teacher-viewsubmittion-m
 import { TeacherChatModuleComponent } from './teacher-chat-module/teacher-chat-module.component';
 import { TeatchernoteModuleComponent } from './teatchernote-module/teatchernote-module.component';
 import { TeatcheAddRnoteModuleComponent } from './teatche-add-rnote-module/teatche-add-rnote-module.component';
+import { TeacherAtteandanceClassComponent } from './teacher-atteandance-class/teacher-atteandance-class.component';
+import { TeacherSubmitAtteandanceComponent } from './teacher-submit-atteandance/teacher-submit-atteandance.component';
+import { TeacherAttendanceFormComponent } from './teacher-attendance-form/teacher-attendance-form.component';
+import { TeacherViewattendacedateComponent } from './teacher-viewattendacedate/teacher-viewattendacedate.component';
+import { TeacherUpdateattendaceComponent } from './teacher-updateattendace/teacher-updateattendace.component';
+import { TeacherAuthGuardService } from './router-gaurd/teachergaurdtologin';
+import { TeacherLoginGuard } from './router-gaurd/teacherloginguard';
+import { TeacherSheduleClassComponent } from './teacher-shedule-class/teacher-shedule-class.component';
+import { TeacherSheduleModuleComponent } from './teacher-shedule-module/teacher-shedule-module.component';
+import { TeacherMarkAssigmentComponent } from './teacher-mark-assigment/teacher-mark-assigment.component';
 
 
 @NgModule({
@@ -52,6 +62,14 @@ import { TeatcheAddRnoteModuleComponent } from './teatche-add-rnote-module/teatc
     TeacherChatModuleComponent,
     TeatchernoteModuleComponent,
     TeatcheAddRnoteModuleComponent,
+    TeacherAtteandanceClassComponent,
+    TeacherSubmitAtteandanceComponent,
+    TeacherAttendanceFormComponent,
+    TeacherViewattendacedateComponent,
+    TeacherUpdateattendaceComponent,
+    TeacherSheduleClassComponent,
+    TeacherSheduleModuleComponent,
+    TeacherMarkAssigmentComponent,
   ],
   imports: [
     CommonModule,
@@ -74,6 +92,10 @@ import { TeatcheAddRnoteModuleComponent } from './teatche-add-rnote-module/teatc
     MatNativeDateModule,
     FormsModule,
     RouterModule,
+  ],
+  providers:[
+    TeacherAuthGuardService,
+    TeacherLoginGuard
   ]
 })
 export class TeacherModule { }

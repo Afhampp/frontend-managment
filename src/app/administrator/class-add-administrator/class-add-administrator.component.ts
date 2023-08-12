@@ -56,6 +56,7 @@ export class ClassAddAdministratorComponent implements OnInit {
     if(this.forms.valid){
       this.serivce.addclass(this.forms.value).subscribe((value)=>{
         if(value.status=="success"){
+          console.log("hai")
           this.confirmwrong=false
           this.matdialogref.close('save')
         }

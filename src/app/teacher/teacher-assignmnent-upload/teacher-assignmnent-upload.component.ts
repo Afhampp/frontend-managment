@@ -104,9 +104,7 @@ export class TeacherAssignmnentUploadComponent implements OnInit {
         // Save the file using FileSaver.js
         saveAs(response, fileName);
       },
-      (error) => {
-        console.error('Error retrieving file:', error);
-      }
+   
     );
   }
   navigate(row:any){

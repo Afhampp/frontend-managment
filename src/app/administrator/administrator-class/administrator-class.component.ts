@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class AdministratorClassComponent implements OnInit{
 
-  displayedColumns: string[] = ['name', 'teacher', 'students','action'];
+  displayedColumns: string[] = ['name', 'teacher', 'students','schedule','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -74,6 +74,9 @@ export class AdministratorClassComponent implements OnInit{
   }
   addstudent(row: any) {
     this.router.navigate(['/administrator/adminhome/adminclassaddstudent',row._id]);
+  }
+  addschedule(row:any){
+    this.router.navigate(['/administrator/adminhome/adminclassaddschedule',row._id])
   }
 
   editvalue(row:any){

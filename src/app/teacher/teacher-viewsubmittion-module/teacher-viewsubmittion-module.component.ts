@@ -8,6 +8,7 @@ import { saveAs } from 'file-saver';
 import { NgConfirmService } from 'ng-confirm-box';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
+import { TeacherMarkAssigmentComponent } from '../teacher-mark-assigment/teacher-mark-assigment.component';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class TeacherViewsubmittionModuleComponent implements OnInit {
 
   rowDataid: string | null = null;
   addteacher!:boolean
-  displayedColumns: string[] = ['name', 'date', 'file'];
+  displayedColumns: string[] = ['name', 'date', 'file','mark','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -31,6 +32,19 @@ export class TeacherViewsubmittionModuleComponent implements OnInit {
     const id = this.activeroute.snapshot.paramMap.get('id');
     this.rowDataid = id;
     this.getteachervalue()
+  }
+
+
+  opendialog(row:any){
+    row.classid=this.rowDataid
+      this.dialog.open(TeacherMarkAssigmentComponent,{
+        width:'50%',
+        data:row
+      }).afterClosed().subscribe((val)=>{
+        if(val=="save"){
+          this.getteachervalue()
+        }
+      })
   }
 
 

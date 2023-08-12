@@ -38,6 +38,18 @@
                 <span>notes</span>
             </button>
         </a>
+        <a [routerLink]="['attendaceclass']" color="primary">
+            <button mat-button>
+                <mat-icon>home</mat-icon>
+                <span>attendance</span>
+            </button>
+        </a>
+        <a [routerLink]="['sheduleclass']" color="primary">
+            <button mat-button>
+                <mat-icon>home</mat-icon>
+                <span>shedule</span>
+            </button>
+        </a>
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>

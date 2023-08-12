@@ -7,7 +7,7 @@
 
   <mat-sidenav-container class="sidenav-wrapper">
     <mat-sidenav #nav opened mode="side">
-        <a [routerLink]="['adminhome']" color="primary">
+        <a [routerLink]="['dashboard']" color="primary">
             <button mat-button>
                 <mat-icon>home</mat-icon>
                 <span>dasborad</span>
@@ -38,6 +38,7 @@
                 <span>Subject</span>
             </button>
         </a>
+        
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>

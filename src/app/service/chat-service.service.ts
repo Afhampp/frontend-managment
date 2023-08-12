@@ -47,9 +47,60 @@ export class ChatServiceService {
       });
     });
   }
+
+  public sendGroupChatMessage(message: ChatMessage): Observable<void> {
+    return new Observable<void>((observer) => {
+      this.socket.emit('chat-message-group-teacher', message, (ack: { success: boolean }) => {
+        if (ack.success) {
+          observer.next();
+          observer.complete();
+        } else {
+          observer.error('Failed to send chat message');
+        }
+      });
+    });
+  }
+  public sendGroupChatstudent(message: ChatMessage): Observable<void> {
+    return new Observable<void>((observer) => {
+      this.socket.emit('chat-message-group-student', message, (ack: { success: boolean }) => {
+        if (ack.success) {
+          observer.next();
+          observer.complete();
+        } else {
+          observer.error('Failed to send chat message');
+        }
+      });
+    });
+  }
+
   public selectStudent(selectedStudent: any): Observable<void> {
     return new Observable<void>((observer) => {
       this.socket.emit('select-student', selectedStudent, (ack: { success: boolean }) => {
+        if (ack.success) {
+          observer.next();
+          observer.complete();
+        } else {
+          observer.error('Failed to send select-student event');
+        }
+      });
+    });
+  }
+  public selectgroup(selectedGroup:any):Observable<void>{
+    return new Observable<void>((observer) => {
+      this.socket.emit('select-group', selectedGroup, (ack: { success: boolean }) => {
+        if (ack.success) {
+          observer.next();
+          observer.complete();
+        } else {
+          observer.error('Failed to send select-student event');
+        }
+      });
+    });
+  }
+
+  public selectgroupforstudent(selectedGroup:any):Observable<void>{
+    return new Observable<void>((observer) => {
+      this.socket.emit('select-group-student', selectedGroup, (ack: { success: boolean }) => {
         if (ack.success) {
           observer.next();
           observer.complete();
@@ -78,8 +129,17 @@ export class ChatServiceService {
   public onChatMessage(): Observable<ChatMessage> {
     return new Observable<ChatMessage>((observer) => {
       this.socket.on('chat-message', (data: any) => {
-        console.log("ethi..........")
-        console.log(data)
+       
+        observer.next(data);
+      });
+    });
+  }
+
+  public onGroupChatMessage(): Observable<any> {
+    return new Observable<ChatMessage>((observer) => {
+      this.socket.on('chat-message-group-message-to-front', (data: any) => {
+       
+       
         observer.next(data);
       });
     });
@@ -88,6 +148,14 @@ export class ChatServiceService {
   public fromserver(): Observable<ChatMessage> {
     return new Observable<ChatMessage>((observer) => {
       this.socket.on('chat-message-student', (data: any) => {
+        observer.next(data);
+      });
+    });
+  }
+
+  public groupselect(): Observable<ChatMessage> {
+    return new Observable<ChatMessage>((observer) => {
+      this.socket.on('chat-message-group', (data: any) => {
         observer.next(data);
       });
     });

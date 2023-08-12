@@ -34,6 +34,9 @@ import { StudentAddTableComponent } from './student-add-table/student-add-table.
 import { StudentViewTableComponent } from './student-view-table/student-view-table.component';
 import { TeacherViewTableComponent } from './teacher-view-table/teacher-view-table.component';
 import { RouterModule } from '@angular/router';
+import { AdministratorSchedulingComponent } from './administrator-scheduling/administrator-scheduling.component';
+import { AdministratorAddSchedulingComponent } from './administrator-add-scheduling/administrator-add-scheduling.component';
+import { AdministartorDashboardComponent } from './administartor-dashboard/administartor-dashboard.component';
 
 
 
@@ -54,7 +57,10 @@ import { RouterModule } from '@angular/router';
     TeacherAddTableComponent,
     StudentAddTableComponent,
     StudentViewTableComponent,
-    TeacherViewTableComponent
+    TeacherViewTableComponent,
+    AdministratorSchedulingComponent,
+    AdministratorAddSchedulingComponent,
+    AdministartorDashboardComponent
   ],
   imports: [
     CommonModule,
