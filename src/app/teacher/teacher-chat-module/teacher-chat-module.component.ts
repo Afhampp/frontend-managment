@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChatServiceService } from 'src/app/service/chat-service.service';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
 
+
 interface ChatMessage {
   sender: string;
   senderid:string;

@@ -16,3 +16,6 @@ table {
     display: flex;
     justify-content: right;
   }  
+  .container-fluid{
+    margin-top: 27px;
+  }

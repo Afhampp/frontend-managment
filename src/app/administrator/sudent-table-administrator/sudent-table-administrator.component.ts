@@ -3,10 +3,11 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatDialog, } from '@angular/material/dialog';
-import { SignupComponent } from '../signup/signup.component';
 import { AdministratorServiceService } from 'src/app/service/administrator-service.service';
 import { NgConfirmService } from 'ng-confirm-box';
 import { StudentAddComponent } from '../student-add/student-add.component';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sudent-table-administrator',
@@ -19,7 +20,7 @@ export class SudentTableAdministratorComponent implements  OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private dialog:MatDialog,private adminservice:AdministratorServiceService,private ngconfirm:NgConfirmService){}
+  constructor(private dialog:MatDialog,private adminservice:AdministratorServiceService,private ngconfirm:NgConfirmService,private route:Router){}
 
   ngOnInit(): void {
     this.getstudent()
@@ -48,13 +49,34 @@ export class SudentTableAdministratorComponent implements  OnInit {
   }
 
   getstudent(){
-    this.adminservice.getstudent().subscribe((value)=>{
-      console.log(value.getdata)
+    this.adminservice.getstudent().subscribe({
+      next:(value)=>{
+     
       
       this.dataSource=new MatTableDataSource(value.getdata)
       this.dataSource.paginator=this.paginator
       this.dataSource.sort=this.sort
-    })
+    },
+    error:(error)=>{
+   
+      if (error.error.message === 'session has expired') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Your session has expired. You will be redirected to the login page.',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+        
+          if (result.isConfirmed) {
+              sessionStorage.removeItem('admin')
+              this.route.navigate(['/admin'])
+          }
+        });
+      }
+  }
+})
   }
 
   editvalue(row:any){
@@ -72,7 +94,8 @@ export class SudentTableAdministratorComponent implements  OnInit {
   deletevalue(row:any){
     this.ngconfirm.showConfirm('Do you want to delete',
       ()=>{
-        this.adminservice.deleteteacher(row._id).subscribe(()=>{
+        console.log(row._id)
+        this.adminservice.deletestudent(row._id).subscribe(()=>{
 
           this.getstudent()
         })

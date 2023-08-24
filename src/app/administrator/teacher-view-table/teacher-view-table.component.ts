@@ -3,11 +3,12 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatDialog, } from '@angular/material/dialog';
-import { SignupComponent } from '../signup/signup.component';
 import { AdministratorServiceService } from 'src/app/service/administrator-service.service';
 import { NgConfirmService } from 'ng-confirm-box';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherAddTableComponent } from '../teacher-add-table/teacher-add-table.component';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-teacher-view-table',
   templateUrl: './teacher-view-table.component.html',
@@ -72,10 +73,31 @@ export class TeacherViewTableComponent implements OnInit {
   deletevalue(row:any){
     this.ngconfirm.showConfirm('Do you want to delete',
       ()=>{
-        this.adminservice.deleteteacherfromclass(row,this.rowDataid).subscribe(()=>{
+        this.adminservice.deleteteacherfromclass(row,this.rowDataid).subscribe({
+          next:()=>{
 
           this.getteachervalue()
-        })
+        },
+        error:(error)=>{
+   
+          if (error.error.message === 'session has expired') {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Your session has expired. You will be redirected to the login page.',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'OK'
+            }).then((result) => {
+            
+              if (result.isConfirmed) {
+                  sessionStorage.removeItem('admin')
+                  this.route.navigate(['/admin'])
+              }
+            });
+          }
+      }
+    })
       },
       ()=>{
 

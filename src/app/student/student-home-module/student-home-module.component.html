@@ -1,48 +1,54 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button (click)="nav.toggle()"><mat-icon>menu</mat-icon></button>
-    <div class="logo">Logo</div>
+<mat-toolbar color="primary" class="top-nav custom-color" >
+    <button mat-icon-button  (click)="nav.toggle()"><mat-icon class="custom-color-icons">menu</mat-icon></button>
+    <div class="custom-color-icons">Logo</div>
     <div class="extra"></div>
-    <button mat-icon-button (click)="singout()"><mat-icon>person</mat-icon></button>
+    <button mat-icon-button  (click)="singout()"><mat-icon class="custom-color-icons">person</mat-icon></button>
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-wrapper">
-    <mat-sidenav #nav opened mode="side">
+  <mat-sidenav-container class="sidenav-wrapper" >
+    <mat-sidenav #nav opened mode="side" class="sidenavbars">
         <a [routerLink]="['dasboard']" color="primary">
             <button mat-button>
-                <mat-icon>home</mat-icon>
-                <span>dasborad</span>
+                <mat-icon class="custom-color-text">home</mat-icon>
+                <span class="custom-color-text">dasborad</span>
             </button>
         </a>
        
-        <a [routerLink]="['dasboard']" color="primary">
+        <a [routerLink]="['assignemnt']" color="primary">
             <button mat-button>
-                <mat-icon>person_add</mat-icon>
-                <span>assignmnet</span>
+                <mat-icon class="custom-color-text">person_add</mat-icon>
+                <span class="custom-color-text">assignmnet</span>
             </button>
             
         </a>
         <a [routerLink]="['chatstudent']" color="primary">
             <button mat-button>
-                <mat-icon>home</mat-icon>
-                <span>message</span>
+                <mat-icon class="custom-color-text">home</mat-icon>
+                <span class="custom-color-text">message</span>
             </button>
         </a>
         <a [routerLink]="['notes']" color="primary">
             <button mat-button>
-                <mat-icon>home</mat-icon>
-                <span>notes</span>
+                <mat-icon class="custom-color-text">home</mat-icon>
+                <span class="custom-color-text">notes</span>
             </button>
         </a>
         <a [routerLink]="['attendace']" color="primary">
             <button mat-button>
-                <mat-icon>home</mat-icon>
-                <span>attendace</span>
+                <mat-icon class="custom-color-text">home</mat-icon>
+                <span class="custom-color-text">attendace</span>
             </button>
         </a>
         <a [routerLink]="['shedule']" color="primary">
             <button mat-button>
-                <mat-icon>home</mat-icon>
-                <span>shedule</span>
+                <mat-icon class="custom-color-text">home</mat-icon>
+                <span class="custom-color-text">shedule</span>
+            </button>
+        </a>
+        <a [routerLink]="['profile']" color="primary">
+            <button mat-button>
+                <mat-icon class="custom-color-text">home</mat-icon>
+                <span class="custom-color-text">profile</span>
             </button>
         </a>
     </mat-sidenav>

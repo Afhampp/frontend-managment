@@ -8,16 +8,16 @@ import { Router } from '@angular/router';
 export class StudentHomeModuleComponent implements OnInit{
 
   constructor(private route:Router){
-    if(!sessionStorage.getItem('student')){
-      this.route.navigate(['/'])
-    }
+    // if(!sessionStorage.getItem('student')){
+    //   this.route.navigate(['/'])
+    // }
   }
   ngOnInit(): void {
    
   }
 
   singout(){
-    sessionStorage.removeItem('teacher')
+    sessionStorage.removeItem('student')
     this.route.navigate(['/'])
   }
 }

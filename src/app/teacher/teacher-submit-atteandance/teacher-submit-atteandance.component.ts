@@ -7,6 +7,7 @@ import { NgConfirmService } from 'ng-confirm-box';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherAttendanceFormComponent } from '../teacher-attendance-form/teacher-attendance-form.component';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -64,12 +65,33 @@ export class TeacherSubmitAtteandanceComponent implements OnInit {
   }
 
   getattendancedata(){
-     this.teacherservice.getattendacedata(this.rowDataid) .subscribe((value)=>{
-      console.log(value.studentsWithStatusCount)
+     this.teacherservice.getattendacedata(this.rowDataid) .subscribe({
+      next:(value)=>{
+  
       this.dataSource=new MatTableDataSource(value.studentsWithStatusCount)
       this.dataSource.paginator=this.paginator
       this.dataSource.sort=this.sort
-    })
+    },
+    error:(error)=>{
+   
+      if (error.error.message === 'session has expired') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Your session has expired. You will be redirected to the login page.',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+        
+          if (result.isConfirmed) {
+              sessionStorage.removeItem('teacher')
+              this.route.navigate(['/teacher'])
+          }
+        });
+      }
+  }
+})
   }
  viewdata(row:any){
   this.route.navigate(['/teacher/home/attedancedate',this.rowDataid],{state:{rowData:row}})

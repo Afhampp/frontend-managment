@@ -10,11 +10,13 @@ import { StudentViewTableComponent } from './student-view-table/student-view-tab
 import { AdministratorSubjectComponent } from './administrator-subject/administrator-subject.component';
 import { AdministratorSchedulingComponent } from './administrator-scheduling/administrator-scheduling.component';
 import { AdministartorDashboardComponent } from './administartor-dashboard/administartor-dashboard.component';
+import { administratortologin } from './router-gaurd/administrator-router-tologin';
+import { administratorfromlogin } from './router-gaurd/administrator-router-fromlogin';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent}, 
-  { path: 'adminhome', component: AdministratorHomeComponent, children: [
-    { path: '', redirectTo: 'adminteacher', pathMatch: 'full' }, 
+  { path: '',canActivate:[administratortologin] ,component: LoginComponent}, 
+  { path: 'adminhome',canActivate:[administratorfromlogin] ,component: AdministratorHomeComponent, children: [
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
     { path: 'dashboard', component: AdministartorDashboardComponent },
     { path: 'adminteacher', component: AdministratorTeacherComponent },
     { path: 'adminstudent', component: SudentTableAdministratorComponent },

@@ -53,4 +53,30 @@ export class StudentServiceService {
     const requestOptions = { headers: headers };
     return this.http.get<any>(this.url+"getclass",requestOptions)
   }
+
+  getcountstudent():Observable<any>{
+    const userType = 'student'
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.get<any>(this.url+"getcountstudent",requestOptions)
+  }
+
+  profilechange(data:any):Observable<any>{
+    const userType = 'student'
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.put<any>(this.url+"profilechange",data,requestOptions)
+  }
+  getprofile():Observable<any>{
+    const userType = 'student'
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.get<any>(this.url+"getprofile",requestOptions)
+  }
+  studentforgetpass(data:any):Observable<any>{
+    const userType = 'student'
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.put<any>(this.url+'forgetpass',data,requestOptions)
+  }
 }

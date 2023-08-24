@@ -21,7 +21,7 @@ import { RouterModule } from '@angular/router';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'; 
 import { FormsModule } from '@angular/forms'; 
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { TeacherRoutingModule } from './teacher-routing.module';
 import { TeacherLoginComponent } from './teacher-login/teacher-login.component';
@@ -46,6 +46,7 @@ import { TeacherLoginGuard } from './router-gaurd/teacherloginguard';
 import { TeacherSheduleClassComponent } from './teacher-shedule-class/teacher-shedule-class.component';
 import { TeacherSheduleModuleComponent } from './teacher-shedule-module/teacher-shedule-module.component';
 import { TeacherMarkAssigmentComponent } from './teacher-mark-assigment/teacher-mark-assigment.component';
+import { TeacherClassTeacherComponent } from './teacher-class-teacher/teacher-class-teacher.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { TeacherMarkAssigmentComponent } from './teacher-mark-assigment/teacher-
     TeacherSheduleClassComponent,
     TeacherSheduleModuleComponent,
     TeacherMarkAssigmentComponent,
+    TeacherClassTeacherComponent,
   ],
   imports: [
     CommonModule,
@@ -91,6 +93,7 @@ import { TeacherMarkAssigmentComponent } from './teacher-mark-assigment/teacher-
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    MatGridListModule,
     RouterModule,
   ],
   providers:[

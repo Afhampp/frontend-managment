@@ -15,12 +15,14 @@ import { TeacherAuthGuardService } from './router-gaurd/teachergaurdtologin';
 import { TeacherLoginGuard } from './router-gaurd/teacherloginguard';
 import { TeacherSheduleClassComponent } from './teacher-shedule-class/teacher-shedule-class.component';
 import { TeacherSheduleModuleComponent } from './teacher-shedule-module/teacher-shedule-module.component';
+import { TeacherClassTeacherComponent } from './teacher-class-teacher/teacher-class-teacher.component';
 
 const routes: Routes = [
   {path:'',canActivate: [TeacherLoginGuard],component:TeacherLoginComponent},
   {path:'home',canActivate: [ TeacherAuthGuardService],component:TeacherHomeModuleComponent,children:[
     {path:'',redirectTo:"dasboard",pathMatch:"full"},
     {path:'dasboard',component:TeacherDashboradModuleComponent},
+    {path:'class',component:TeacherClassTeacherComponent},
     {path:'showclass/:id',component:TeacherShowclassModuleComponent},
     {path:'teachetassigment',component:TeacherAssignmnentUploadComponent},
     {path:'submittedassigment/:id',component:TeacherViewsubmittionModuleComponent},

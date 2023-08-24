@@ -34,10 +34,7 @@ export class InterceptorMiddlwareInterceptor implements HttpInterceptor {
         if (error.status === 502) {
           this.toastr.error('Bad Gateway: Please try again later', 'Error');
         }
-        else if(error.status==403){
-          this.toastr.error("session out")
-
-        }
+       
 
         // Re-throw the error to propagate it further
         return throwError(error);

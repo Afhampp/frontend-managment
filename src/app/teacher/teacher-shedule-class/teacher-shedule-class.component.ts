@@ -6,6 +6,7 @@ import {MatDialog, } from '@angular/material/dialog';
 
 import { AdministratorServiceService } from 'src/app/service/administrator-service.service';
 import { NgConfirmService } from 'ng-confirm-box';
+import Swal from 'sweetalert2';
 
 import { Router } from '@angular/router';
 
@@ -50,13 +51,26 @@ export class TeacherSheduleClassComponent implements OnInit{
       this.dataSource.paginator=this.paginator
       this.dataSource.sort=this.sort
     },
-    error:(value)=>{
-      if(value.message=='session has expired'){
-        sessionStorage.removeItem('teacher')
-        this.router.navigate(['/teacher'])
+    error:(error)=>{
+   
+      if (error.error.message === 'session has expired') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Your session has expired. You will be redirected to the login page.',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+        
+          if (result.isConfirmed) {
+              sessionStorage.removeItem('teacher')
+              this.router.navigate(['/teacher'])
+          }
+        });
       }
-
-    }})
+  }
+})
   }
 
   addteacher(row: any) {

@@ -8,6 +8,7 @@ import { AdministratorServiceService } from 'src/app/service/administrator-servi
 import { NgConfirmService } from 'ng-confirm-box';
 import { ClassAddAdministratorComponent } from '../class-add-administrator/class-add-administrator.component';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-administrator-class',
@@ -60,13 +61,26 @@ export class AdministratorClassComponent implements OnInit{
       this.dataSource.paginator=this.paginator
       this.dataSource.sort=this.sort
     },
-    error:(value)=>{
-      if(value.message=='session has expired'){
-        sessionStorage.removeItem('admin')
-        this.router.navigate(['/administrator'])
+    error:(error)=>{
+   
+      if (error.error.message === 'session has expired') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Your session has expired. You will be redirected to the login page.',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+        
+          if (result.isConfirmed) {
+              sessionStorage.removeItem('admin')
+              this.router.navigate(['/admin'])
+          }
+        });
       }
-
-    }})
+  }
+})
   }
 
   addteacher(row: any) {

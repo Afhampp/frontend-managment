@@ -9,6 +9,7 @@ import { NgConfirmService } from 'ng-confirm-box';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
 import { TeacherMarkAssigmentComponent } from '../teacher-mark-assigment/teacher-mark-assigment.component';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -65,12 +66,32 @@ export class TeacherViewsubmittionModuleComponent implements OnInit {
   }
 
   getteachervalue(){
-     this.serivce.getassigmentsubmitted(this.rowDataid) .subscribe((value)=>{
-      console.log(value.submittionWithName)
+     this.serivce.getassigmentsubmitted(this.rowDataid) .subscribe({
+      next:(value)=>{
       this.dataSource=new MatTableDataSource(value.submittionWithName)
       this.dataSource.paginator=this.paginator
       this.dataSource.sort=this.sort
-    })
+    },
+    error:(error)=>{
+   
+      if (error.error.message === 'session has expired') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Your session has expired. You will be redirected to the login page.',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+        
+          if (result.isConfirmed) {
+              sessionStorage.removeItem('teacher')
+              this.route.navigate(['/teacher'])
+          }
+        });
+      }
+  }
+})
   }
 
   downloadPDF(fileName: string) {

@@ -109,4 +109,13 @@ export class TeacherServiceService {
     const requestOptions = { headers: headers };
     return this.http.put<any>(this.url+'updatemark',data,requestOptions)
   }
+
+  getcount(): Observable<any> {
+    const userType = 'teacher';
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+  
+    // Include both parameters in the URL
+    return this.http.get<any>(`${this.url}getcount`, requestOptions);
+  }
 }

@@ -7,17 +7,25 @@ import { StudetnchatModuleComponent } from './studetnchat-module/studetnchat-mod
 import { StudentNoteModuleComponent } from './student-note-module/student-note-module.component';
 import { StudentAttendaceComponent } from './student-attendace/student-attendace.component';
 import { StudentSheduleModuleComponent } from './student-shedule-module/student-shedule-module.component';
+import { StudentAssigmentclaassModuleComponent } from './student-assigmentclaass-module/student-assigmentclaass-module.component';
+import { StudentProfileStudentComponent } from './student-profile-student/student-profile-student.component';
+import { StudentForgetpasswordComponent } from './student-forgetpassword/student-forgetpassword.component';
+import { studenttologin } from './router-gaurd/router-guard-fromlogin-student';
+import { studentfromlogin } from './router-gaurd/router-gaurd-tologin-student';
 
 
 const routes: Routes = [
-  {path:'',component:StudentLoginComponent},
-  {path:'home',component:StudentHomeModuleComponent,children:[
+  {path:'',canActivate:[studenttologin],component:StudentLoginComponent},
+  {path:'forgetpassword/:id',component:StudentForgetpasswordComponent},
+  {path:'home',canActivate:[studentfromlogin],component:StudentHomeModuleComponent,children:[
     {path:'',redirectTo:"dasboard",pathMatch:"full"},
     {path:'dasboard',component:StudentDashboardModuleComponent},
+    {path:'assignemnt',component:StudentAssigmentclaassModuleComponent},
     {path:'chatstudent',component:StudetnchatModuleComponent},
     {path:'notes',component:StudentNoteModuleComponent},
     {path:'attendace',component:StudentAttendaceComponent},
-    {path:'shedule',component:StudentSheduleModuleComponent}
+    {path:'shedule',component:StudentSheduleModuleComponent},
+    {path:'profile',component:StudentProfileStudentComponent}
   ]}
 ];
 

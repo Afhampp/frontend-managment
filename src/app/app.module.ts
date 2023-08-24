@@ -22,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
 import { NgConfirmModule } from 'ng-confirm-box';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ToastrModule } from 'ngx-toastr';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 import {MatSelectModule} from '@angular/material/select';
@@ -31,6 +33,7 @@ import { AdministratorModule } from './administrator/administrator.module';
 import { TeacherModule } from './teacher/teacher.module';
 import { StudentModule } from './student/student.module';
 import { InterceptorMiddlwareInterceptor } from './intreceptor/interceptor-middlware.interceptor';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 
@@ -39,6 +42,7 @@ import { InterceptorMiddlwareInterceptor } from './intreceptor/interceptor-middl
 @NgModule({
   declarations: [
     AppComponent,
+    NotfoundComponent,
 
   ],
   imports: [
@@ -63,6 +67,8 @@ import { InterceptorMiddlwareInterceptor } from './intreceptor/interceptor-middl
     AdministratorModule,
     TeacherModule,
     StudentModule,
+    MatGridListModule,
+    MatProgressBarModule,
     RouterModule,
     ToastrModule.forRoot()
 

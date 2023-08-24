@@ -1,7 +1,9 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms'
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AdministratorServiceService } from 'src/app/service/administrator-service.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-administrator-add-scheduling',
   templateUrl: './administrator-add-scheduling.component.html',
@@ -17,7 +19,7 @@ export class AdministratorAddSchedulingComponent implements OnInit {
   teacherlist: { subject: string, id: string }[] = [];
 
 
-  constructor(private builder:FormBuilder,private serivce:AdministratorServiceService,private matdialogref:MatDialogRef<AdministratorAddSchedulingComponent>,@Inject(MAT_DIALOG_DATA) public editdata:any){}
+  constructor(private builder:FormBuilder,private serivce:AdministratorServiceService,private matdialogref:MatDialogRef<AdministratorAddSchedulingComponent>,@Inject(MAT_DIALOG_DATA) public editdata:any,private route:Router){}
  
  
   ngOnInit(): void {
@@ -60,11 +62,32 @@ export class AdministratorAddSchedulingComponent implements OnInit {
   }
 
   getsubjectdata(){
-    this.serivce.getsubject().subscribe((value)=>{
+    this.serivce.getsubject().subscribe({
+      next:(value)=>{
   
       this.teacherlist=value.getdata
       console.log(this.teacherlist)
-    })
+    },
+    error:(error)=>{
+   
+      if (error.error.message === 'session has expired') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Your session has expired. You will be redirected to the login page.',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+        
+          if (result.isConfirmed) {
+              sessionStorage.removeItem('admin')
+              this.route.navigate(['/admin'])
+          }
+        });
+      }
+  }
+})
   }
 
   Onsubmit(){

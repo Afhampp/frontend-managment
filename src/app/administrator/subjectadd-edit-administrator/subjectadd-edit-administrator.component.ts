@@ -4,6 +4,8 @@ import {MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdministratorServiceService } from 'src/app/service/administrator-service.service';
 import { NgConfirmService } from 'ng-confirm-box';
 import { FormBuilder,FormGroup,AbstractControl,Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subjectadd-edit-administrator',
@@ -18,7 +20,7 @@ export class SubjectaddEditAdministratorComponent implements OnInit{
   buttonaction:string="add"
   alreadyexistsubject:boolean=false
 
-  constructor(private adminservice:AdministratorServiceService,private ngconfirm:NgConfirmService,private formbuilder:FormBuilder,private matdialogref:MatDialogRef<SubjectaddEditAdministratorComponent>,@Inject (MAT_DIALOG_DATA) public editdata:any){}
+  constructor(private adminservice:AdministratorServiceService,private ngconfirm:NgConfirmService,private formbuilder:FormBuilder,private matdialogref:MatDialogRef<SubjectaddEditAdministratorComponent>,@Inject (MAT_DIALOG_DATA) public editdata:any,private route:Router){}
 
   ngOnInit(): void {
     this.formbuild()
@@ -40,7 +42,8 @@ export class SubjectaddEditAdministratorComponent implements OnInit{
     if(!this.editdata){
       if(this.forms.valid){
       
-        this.adminservice.subjectadd(this.forms.value).subscribe((value)=>{
+        this.adminservice.subjectadd(this.forms.value).subscribe({
+          next:(value)=>{
           if(value.status=="error"){
             this.alreadyexist=true
           }
@@ -48,7 +51,26 @@ export class SubjectaddEditAdministratorComponent implements OnInit{
             this.alreadyexist=false
             this.matdialogref.close('add')
           }
-        })
+        },error:(error)=>{
+   
+          if (error.error.message === 'session has expired') {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Your session has expired. You will be redirected to the login page.',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'OK'
+            }).then((result) => {
+            
+              if (result.isConfirmed) {
+                  sessionStorage.removeItem('admin')
+                  this.route.navigate(['/admin'])
+              }
+            });
+          }
+      }
+    })
         
       }
     }

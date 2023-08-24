@@ -16,11 +16,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { NgConfirmModule } from 'ng-confirm-box';
 import {MatSelectModule} from '@angular/material/select';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { RouterModule } from '@angular/router';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'; 
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { StudentRoutingModule } from './student-routing.module';
 import { StudentLoginComponent } from './student-login/student-login.component';
@@ -31,6 +31,11 @@ import { StudetnchatModuleComponent } from './studetnchat-module/studetnchat-mod
 import { StudentNoteModuleComponent } from './student-note-module/student-note-module.component';
 import { StudentAttendaceComponent } from './student-attendace/student-attendace.component';
 import { StudentSheduleModuleComponent } from './student-shedule-module/student-shedule-module.component';
+import { StudentAssigmentclaassModuleComponent } from './student-assigmentclaass-module/student-assigmentclaass-module.component';
+import { StudentProfileStudentComponent } from './student-profile-student/student-profile-student.component';
+import { StudentForgetpasswordComponent } from './student-forgetpassword/student-forgetpassword.component';
+import { studenttologin } from './router-gaurd/router-guard-fromlogin-student';
+import { studentfromlogin } from './router-gaurd/router-gaurd-tologin-student';
 
 
 @NgModule({
@@ -42,7 +47,10 @@ import { StudentSheduleModuleComponent } from './student-shedule-module/student-
     StudetnchatModuleComponent,
     StudentNoteModuleComponent,
     StudentAttendaceComponent,
-    StudentSheduleModuleComponent
+    StudentSheduleModuleComponent,
+    StudentAssigmentclaassModuleComponent,
+    StudentProfileStudentComponent,
+    StudentForgetpasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -63,6 +71,7 @@ import { StudentSheduleModuleComponent } from './student-shedule-module/student-
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressBarModule,
     FormsModule,
     RouterModule,
   ]

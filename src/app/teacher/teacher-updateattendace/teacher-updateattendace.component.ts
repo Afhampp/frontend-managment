@@ -1,7 +1,9 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms'
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-teacher-updateattendace',
   templateUrl: './teacher-updateattendace.component.html',
@@ -15,7 +17,7 @@ export class TeacherUpdateattendaceComponent implements OnInit {
   confirmwrong:boolean=false
 
 
-  constructor(private builder:FormBuilder,private teacherserivce:TeacherServiceService,private matdialogref:MatDialogRef<TeacherUpdateattendaceComponent>,@Inject(MAT_DIALOG_DATA) public id:any){}
+  constructor(private builder:FormBuilder,private teacherserivce:TeacherServiceService,private matdialogref:MatDialogRef<TeacherUpdateattendaceComponent>,@Inject(MAT_DIALOG_DATA) public id:any,private route:Router){}
  
  
   ngOnInit(): void {
@@ -62,11 +64,25 @@ export class TeacherUpdateattendaceComponent implements OnInit {
         
       },
       error:(error)=>{
-        if(error.status="error"){
-          this.confirmwrong=true
+   
+        if (error.error.message === 'session has expired') {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Your session has expired. You will be redirected to the login page.',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+          
+            if (result.isConfirmed) {
+                sessionStorage.removeItem('teacher')
+                this.route.navigate(['/teacher'])
+            }
+          });
         }
-      }
-    })
+    }
+  })
     }
 
 }

@@ -1,10 +1,9 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms'
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AdministratorServiceService } from 'src/app/service/administrator-service.service';
+import { Router } from '@angular/router';
 import { StudentServiceService } from 'src/app/service/student-service.service';
-import { TeacherServiceService } from 'src/app/service/teacher-service.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-student-addasignment-module',
   templateUrl: './student-addasignment-module.component.html',
@@ -21,7 +20,7 @@ export class StudentAddasignmentModuleComponent implements OnInit {
   actionbut:string="save"
   toppingList!: { name: string; id: string }[]
   notpdf:boolean=false
-  constructor(private builder:FormBuilder,private serivce:StudentServiceService,private matdialogref:MatDialogRef<StudentAddasignmentModuleComponent>,@Inject(MAT_DIALOG_DATA) public editdata:any){}
+  constructor(private builder:FormBuilder,private serivce:StudentServiceService,private matdialogref:MatDialogRef<StudentAddasignmentModuleComponent>,@Inject(MAT_DIALOG_DATA) public editdata:any,private route:Router){}
  
  
   ngOnInit(): void {
@@ -68,14 +67,35 @@ export class StudentAddasignmentModuleComponent implements OnInit {
           formDataToSend.append('file', fileValue);
 
           
-          this.serivce.assigemntsubmittion(formDataToSend,this.editdata._id).subscribe((value) => {
+          this.serivce.assigemntsubmittion(formDataToSend,this.editdata._id).subscribe({
+            next:(value) => {
             if (value.status === 'success') {
               this.confirm = true
               this.matdialogref.close('save');
             } else {
               
             }
-          });
+          },
+          error:(error)=>{
+   
+            if (error.error.message === 'session has expired') {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Your session has expired. You will be redirected to the login page.',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+              }).then((result) => {
+              
+                if (result.isConfirmed) {
+                    sessionStorage.removeItem('student')
+                    this.route.navigate(['/'])
+                }
+              });
+            }
+        }
+      });
         } 
       }
   }

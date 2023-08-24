@@ -3,11 +3,11 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatDialog,MatDialogRef } from '@angular/material/dialog';
-import { SignupComponent } from '../signup/signup.component';
 import { AdministratorServiceService } from 'src/app/service/administrator-service.service';
 import { NgConfirmService } from 'ng-confirm-box';
 import { SubjectaddEditAdministratorComponent } from '../subjectadd-edit-administrator/subjectadd-edit-administrator.component';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-administrator-subject',
@@ -64,13 +64,26 @@ export class AdministratorSubjectComponent implements OnInit {
       this.dataSource.paginator=this.paginator
       this.dataSource.sort=this.sort
     },
-    error:(value)=>{
-      if(value.message=='session has expired'){
-        sessionStorage.removeItem('admin')
-        this.route.navigate(['/administrator'])
+    error:(error)=>{
+   
+      if (error.error.message === 'session has expired') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Your session has expired. You will be redirected to the login page.',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+        
+          if (result.isConfirmed) {
+              sessionStorage.removeItem('admin')
+              this.route.navigate(['/admin'])
+          }
+        });
       }
-
-    }})
+  }
+})
   }
 
   editvalue(row:any){

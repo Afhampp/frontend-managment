@@ -1,8 +1,9 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms'
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AdministratorServiceService } from 'src/app/service/administrator-service.service';
+import { Router } from '@angular/router';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-teacher-add-assignmnent',
   templateUrl: './teacher-add-assignmnent.component.html',
@@ -19,18 +20,25 @@ export class TeacherAddAssignmnentComponent implements OnInit {
   actionbut:string="save"
   toppingList!: { name: string; id: string }[]
   notpdf:boolean=false
-  constructor(private builder:FormBuilder,private serivce:TeacherServiceService,private matdialogref:MatDialogRef<TeacherAddAssignmnentComponent>,@Inject(MAT_DIALOG_DATA) public editdata:any){}
+  today = new Date();
+  minDate: Date = this.today;
+  frommindate!: Date;
+  
+  
+  constructor(private builder:FormBuilder,private serivce:TeacherServiceService,private matdialogref:MatDialogRef<TeacherAddAssignmnentComponent>,@Inject(MAT_DIALOG_DATA) public editdata:any,private route:Router){
+  
+  }
  
  
   ngOnInit(): void {
     this.formbuild()
     this.serivce.getclasses().subscribe((value)=>{
-      // console.log(value.clasvalue)
+  
       this.toppingList = value.clasvalue.map((teacher: any) => ({
         name: teacher.name,
         id: teacher._id
       }));
-      console.log(this.toppingList)
+  
     })
     this.updateactive=true
     if(this.editdata){
@@ -44,8 +52,8 @@ export class TeacherAddAssignmnentComponent implements OnInit {
     }
   }
 
+
   formbuild():void{
-    
     this.forms=this.builder.group({
       'name':['',[Validators.required,trimValidator]],
       'class':['',[Validators.required]],
@@ -92,14 +100,35 @@ export class TeacherAddAssignmnentComponent implements OnInit {
           formDataToSend.append('from', this.forms.value.from);
           formDataToSend.append('to', this.forms.value.to);
           console.log(formDataToSend)
-          this.serivce.assigmentquestion(formDataToSend).subscribe((value) => {
+          this.serivce.assigmentquestion(formDataToSend).subscribe({
+            next:(value) => {
             if (value.status === 'success') {
               this.confirmwrong = false;
               this.matdialogref.close('save');
             } else {
               this.confirmwrong = true;
             }
-          });
+          },
+          error:(error)=>{
+   
+            if (error.error.message === 'session has expired') {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Your session has expired. You will be redirected to the login page.',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+              }).then((result) => {
+              
+                if (result.isConfirmed) {
+                    sessionStorage.removeItem('teacher')
+                    this.route.navigate(['/teacher'])
+                }
+              });
+            }
+        }
+      });
         } 
       }
     } else {

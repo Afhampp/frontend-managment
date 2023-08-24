@@ -1,41 +1,41 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button (click)="nav.toggle()"><mat-icon>menu</mat-icon></button>
+<mat-toolbar color="primary" class="top-nav custom-color">
+    <button mat-icon-button (click)="nav.toggle()"><mat-icon class="custom-color-icons">menu</mat-icon></button>
     <div class="logo">Logo</div>
     <div class="extra"></div>
-    <button mat-icon-button (click)="singout()"><mat-icon>person</mat-icon></button>
+    <button mat-icon-button (click)="singout()"><mat-icon class="custom-color-icons">person</mat-icon></button>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-wrapper">
     <mat-sidenav #nav opened mode="side">
         <a [routerLink]="['dashboard']" color="primary">
             <button mat-button>
-                <mat-icon>home</mat-icon>
-                <span>dasborad</span>
+                <mat-icon class="custom-color-text">home</mat-icon>
+                <span class="custom-color-text">dasborad</span>
             </button>
         </a>
         <a [routerLink]="['adminclass']" color="primary">
             <button mat-button>
-                <mat-icon>person</mat-icon>
-                <span>class</span>
+                <mat-icon class="custom-color-text">person</mat-icon>
+                <span class="custom-color-text">class</span>
             </button>
         </a>
         <a [routerLink]="['adminteacher']" color="primary">
             <button mat-button>
-                <mat-icon>person_add</mat-icon>
-                <span>teacher</span>
+                <mat-icon> class="custom-color-text"person_add</mat-icon>
+                <span class="custom-color-text">teacher</span>
             </button>
             
         </a>
         <a [routerLink]="['adminstudent']" color="primary">
             <button mat-button>
-                <mat-icon>home</mat-icon>
-                <span>student</span>
+                <mat-icon class="custom-color-text">home</mat-icon>
+                <span class="custom-color-text">student</span>
             </button>
         </a>
         <a [routerLink]="['adminsubject']" color="primary">
             <button mat-button>
-                <mat-icon>home</mat-icon>
-                <span>Subject</span>
+                <mat-icon class="custom-color-text">home</mat-icon>
+                <span class="custom-color-text">Subject</span>
             </button>
         </a>
         

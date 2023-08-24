@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHandler, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { logindata }from '../administrator/logininterface'
+import { Form } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { logindata }from '../administrator/logininterface'
 export class AdministratorServiceService {
 
   constructor(private http:HttpClient) { }
-   url='http://localhost:3000/admin/'
+  url='http://localhost:3000/admin/'
 
   adminlogin(data:logindata):Observable<any>{
     return this.http.post<logindata>(this.url+'login',data)
@@ -29,10 +30,10 @@ export class AdministratorServiceService {
     const requestOptions = { headers: headers };
     return this.http.get<any>(this.url+'getteacher',requestOptions)
   }
-  updateteacher(data:any,id:any):Observable<any>{
+  updateteacher(data:Object,id:string):Observable<any>{
     return this.http.put<any>(this.url+'updatedata/'+id,data)
   }
-  deleteteacher(id:any):Observable<any>{
+  deleteteacher(id:string):Observable<any>{
     return this.http.delete<any>(this.url+'deletedata/'+id)
   }
   subjectadd(data:any):Observable<any>{

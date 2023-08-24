@@ -11,10 +11,9 @@ export class TeacherAuthGuardService implements CanActivate {
   canActivate(): boolean {
     const teacherData = sessionStorage.getItem('teacher');
     if (teacherData) {
-      // User is logged in, allow access
       return true;
     } else {
-      // User is not logged in, navigate to login page
+     
       this.router.navigate(['/teacher']);
       return false;
     }
