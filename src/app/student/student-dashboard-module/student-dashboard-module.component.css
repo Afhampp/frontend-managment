@@ -6,15 +6,23 @@ body {
   
   .container {
     background-color: #eee;
-    margin-top: 20px;
+   
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
    
   }
 
   .container-fluid {
-    margin-top: 27px; /* Adjust as needed */
+   
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card {
+  background: #27293d;
+  border: 0;
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 20px 0px rgba(0, 0, 0, 0.1);
 }
   
  

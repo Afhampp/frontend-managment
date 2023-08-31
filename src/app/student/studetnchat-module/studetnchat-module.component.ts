@@ -40,7 +40,10 @@ public allMessages: ChatMessage[] = [];
 public groups:Group[]= [];
 public selectedGroup: Group| null = null;
 public groupMessages: ChatMessage[] = [];
+filteredStudents: teacher[] = [];
+filteredGroups: Group[] = [];
 studentid!: string;
+search!:string
 
 
   constructor(
@@ -177,6 +180,18 @@ studentid!: string;
         console.error('Error sending group message:', error);
       }
     );
+  }
+
+  submit(){
+
+    this.filteredStudents = this.allStudentsData.filter(student =>
+      student.name.toLowerCase().includes(this.search.toLowerCase())
+    );
+
+    this.filteredGroups = this.groups.filter(group =>
+      group.name.toLowerCase().includes(this.search.toLowerCase())
+    );
+    
   }
   
 

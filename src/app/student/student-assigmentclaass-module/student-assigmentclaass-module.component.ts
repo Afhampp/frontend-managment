@@ -53,7 +53,7 @@ export class StudentAssigmentclaassModuleComponent implements OnInit {
 
   openDialog(row:any){
     this.dialog.open(StudentAddasignmentModuleComponent,{
-      width:'50%',
+      width:'36%',
       data:row
     }).afterClosed().subscribe((val)=>{
       if(val=="save"){

@@ -46,7 +46,8 @@ export class StudentDashboardModuleComponent implements OnInit{
         this.totalabsent=this.absentCount.reduce((total,value)=>{
           return total+value
         },0)
-        this.percentage=((this.totalpreset)/(this.totalabsent+this.totalpreset))*100
+        const percent=Number(((this.totalpreset)/(this.totalabsent+this.totalpreset))*100)
+        this.percentage = Number(percent.toFixed(1))
        this.piechart.push(this.totalpreset)
        this.piechart.push(this.totalabsent)
       this.graphvalue.push(this.teacher)
@@ -84,8 +85,9 @@ export class StudentDashboardModuleComponent implements OnInit{
         datasets: [{
           label: 'mark',
           data: this.totalMarks,
-          backgroundColor: ['#5046e5'],
-          borderWidth: 1
+          backgroundColor: ['#ba54f5'],
+          borderWidth: 1,
+          barThickness: 10
         }]
       },
       options: {
@@ -93,6 +95,11 @@ export class StudentDashboardModuleComponent implements OnInit{
           x: {
             grid: {
               display: false
+            },
+            ticks: {
+              font: {
+                size: 7 // Adjust the font size
+              }
             }
           },
           y: {
@@ -114,13 +121,13 @@ export class StudentDashboardModuleComponent implements OnInit{
         datasets: [{
           label: 'Present Count',
           data: this.presentCount,
-          backgroundColor: '#5046e5',
+          backgroundColor: '#ba54f5',
           borderWidth: 1
         },
         {
           label: 'Absent Count',
           data: this.absentCount,
-          backgroundColor: '#b1b1b1',
+          backgroundColor: '#e14eca',
           borderWidth: 1
         }]
       },
@@ -129,6 +136,11 @@ export class StudentDashboardModuleComponent implements OnInit{
           x: {
             grid: {
               display: false
+            },
+            ticks: {
+              font: {
+                size: 7 // Adjust the font size
+              }
             }
           },
           y: {
@@ -155,7 +167,7 @@ export class StudentDashboardModuleComponent implements OnInit{
         labels:["total present","total absent"],
         datasets: [{
           data: this.piechart,
-          backgroundColor: ['#5046e5','#b1b1b1'],
+          backgroundColor: ['#ba54f5','#e14eca'],
           borderWidth: 1
         }
         ]

@@ -47,6 +47,7 @@ import { TeacherSheduleClassComponent } from './teacher-shedule-class/teacher-sh
 import { TeacherSheduleModuleComponent } from './teacher-shedule-module/teacher-shedule-module.component';
 import { TeacherMarkAssigmentComponent } from './teacher-mark-assigment/teacher-mark-assigment.component';
 import { TeacherClassTeacherComponent } from './teacher-class-teacher/teacher-class-teacher.component';
+import { TeachermockComponentComponent } from './teachermock-component/teachermock-component.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { TeacherClassTeacherComponent } from './teacher-class-teacher/teacher-cl
     TeacherSheduleModuleComponent,
     TeacherMarkAssigmentComponent,
     TeacherClassTeacherComponent,
+    TeachermockComponentComponent,
   ],
   imports: [
     CommonModule,

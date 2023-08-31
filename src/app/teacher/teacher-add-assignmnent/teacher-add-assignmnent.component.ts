@@ -73,8 +73,7 @@ export class TeacherAddAssignmnentComponent implements OnInit {
 
   onFileSelected(event:any){
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      console.log(file)  
+      const file = event.target.files[0]; 
       if (file.type !== 'application/pdf') {
         
        this.notpdf=true

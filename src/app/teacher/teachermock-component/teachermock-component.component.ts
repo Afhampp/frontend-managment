@@ -24,15 +24,12 @@ interface Group {
   selected?:string
   teacherid?:string
 }
-
-
-
 @Component({
-  selector: 'app-teacher-chat-module',
-  templateUrl: './teacher-chat-module.component.html',
-  styleUrls: ['./teacher-chat-module.component.css'],
+  selector: 'app-teachermock-component',
+  templateUrl: './teachermock-component.component.html',
+  styleUrls: ['./teachermock-component.component.css']
 })
-export class TeacherChatModuleComponent implements OnInit {
+export class TeachermockComponentComponent implements OnInit {
   public messageInput: string = '';
 public messages: ChatMessage[] = [];
 public teacherName: string = '';
@@ -53,6 +50,7 @@ teacherid!: string;
   ngOnInit(): void {
     this.teacherService.getteacherid().subscribe(
       (data) => {
+        console.log(data)
         this.teacherid = data.teacherid;
         this.teacherName = data.teachername;
         this.allStudentsData = data.allStudentsData;
@@ -88,15 +86,16 @@ teacherid!: string;
 }
   public sendMessage() {
 
+    console.log("haii...........")
       const newMessage: ChatMessage = {
         sender: this.teacherName,
         senderid:this.teacherid, 
         timestamp: new Date(),
         content: this.messageInput,
-        receiver:this.selectedGroup?.classid
+        receiver:this.selectedStudent?._id
       };
-      console.log(this.selectedGroup)
-      console.log(newMessage)
+  
+    
 
       
       this.messageInput=''
@@ -118,6 +117,7 @@ teacherid!: string;
       student.selected = "selected";
       student.teacherid = this.teacherid;
       this.selectedStudent = student;
+      
   
       // Emit the "select-student" event instead of "chat-message"
       this.chatService.selectStudent(this.selectedStudent).subscribe(

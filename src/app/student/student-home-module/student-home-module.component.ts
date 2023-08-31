@@ -7,17 +7,27 @@ import { Router } from '@angular/router';
 })
 export class StudentHomeModuleComponent implements OnInit{
 
+
+  isSidebarMini = true;
+
+  
   constructor(private route:Router){
-    // if(!sessionStorage.getItem('student')){
-    //   this.route.navigate(['/'])
-    // }
+    
   }
   ngOnInit(): void {
    
   }
 
+  toggleSidebar() {
+    console.log('Toggle sidebar clicked');
+    this.isSidebarMini = !this.isSidebarMini;
+  }
+
   singout(){
     sessionStorage.removeItem('student')
     this.route.navigate(['/'])
+  }
+  isActive(routePath: string): boolean {
+    return this.route.isActive(routePath, false);
   }
 }

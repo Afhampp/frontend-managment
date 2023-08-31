@@ -1,13 +1,13 @@
-<div class="container" style="padding-top: 20px;">
+<div class="container" style="padding-top: 20px;" >
     
-    <div style="margin-top: 10px;">
-        <mat-form-field>
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <div style="margin-top: 10px;background-color: #525f7f;" >
+        <mat-form-field >
+            <mat-label >Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input  >
           </mat-form-field>
           
           <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort>
+            <table mat-table [dataSource]="dataSource" matSort  >
           
               <!-- ID Column -->
               <ng-container matColumnDef="name">

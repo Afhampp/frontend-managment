@@ -48,7 +48,7 @@ export class TeacherAssignmnentUploadComponent implements OnInit {
 
   openDialog(){
     this.dialog.open(TeacherAddAssignmnentComponent,{
-      width:'50%'
+      width:'38%'
     }).afterClosed().subscribe((val)=>{
       if(val=="save"){
         this.getteachervalue()

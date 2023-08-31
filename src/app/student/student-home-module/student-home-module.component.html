@@ -1,58 +1,108 @@
-<mat-toolbar color="primary" class="top-nav custom-color" >
-    <button mat-icon-button  (click)="nav.toggle()"><mat-icon class="custom-color-icons">menu</mat-icon></button>
-    <div class="custom-color-icons">Logo</div>
-    <div class="extra"></div>
-    <button mat-icon-button  (click)="singout()"><mat-icon class="custom-color-icons">person</mat-icon></button>
-  </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-wrapper" >
-    <mat-sidenav #nav opened mode="side" class="sidenavbars">
-        <a [routerLink]="['dasboard']" color="primary">
-            <button mat-button>
-                <mat-icon class="custom-color-text">home</mat-icon>
-                <span class="custom-color-text">dasborad</span>
-            </button>
-        </a>
-       
-        <a [routerLink]="['assignemnt']" color="primary">
-            <button mat-button>
-                <mat-icon class="custom-color-text">person_add</mat-icon>
-                <span class="custom-color-text">assignmnet</span>
-            </button>
+
+ 
+
+  
+  <div class="wrapper">
+    
+    <div class="sidebar"  *ngIf=" isSidebarMini">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+    -->
+   
+      <div class="sidebar-wrapper">
+        <div class="logo">
             
-        </a>
-        <a [routerLink]="['chatstudent']" color="primary">
-            <button mat-button>
-                <mat-icon class="custom-color-text">home</mat-icon>
-                <span class="custom-color-text">message</span>
+          <a href="javascript:void(0)" class="simple-text logo-mini">
+            CT
+          </a>
+          <a href="javascript:void(0)" class="simple-text logo-normal">
+            Creative Tim
+          </a>
+        </div>
+        
+        <ul class="nav">
+          <li routerLinkActive="active">
+            <a [routerLink]="['dasboard']">
+              <i class="fas fa-chart-pie"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['assignemnt']">
+              <i class="fas fa-atom"></i>
+              <p>assignemnt</p>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['chatstudent']">
+              <i class="fas fa-comment"></i>
+              <p>chatstudent</p>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['notes']">
+              <i class="fas fa-sticky-note"></i>
+              <p>notes</p>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['attendace']">
+              <i class="fas fa-calendar-check"></i>
+              <p>attendace</p>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['shedule']">
+              <i class="fas fa-calendar-alt"></i>
+              <p>sghecule</p>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a [routerLink]="['profile']">
+              <i class="fas fa-user"></i>
+              <p>profile</p>
+            </a>
+          </li>
+         
+        </ul>
+        
+    
+      </div>
+      
+    </div>
+
+
+    <div class="main-panel" >
+
+      
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle d-inline">
+                
+            </div>
+            
+            
+            <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
+            <button (click)="toggleSidebar()" style=" background-color: black; color: white; width: 20px; margin-left: 2px;">
+              <i class="fas fa-bars"></i>
             </button>
-        </a>
-        <a [routerLink]="['notes']" color="primary">
-            <button mat-button>
-                <mat-icon class="custom-color-text">home</mat-icon>
-                <span class="custom-color-text">notes</span>
-            </button>
-        </a>
-        <a [routerLink]="['attendace']" color="primary">
-            <button mat-button>
-                <mat-icon class="custom-color-text">home</mat-icon>
-                <span class="custom-color-text">attendace</span>
-            </button>
-        </a>
-        <a [routerLink]="['shedule']" color="primary">
-            <button mat-button>
-                <mat-icon class="custom-color-text">home</mat-icon>
-                <span class="custom-color-text">shedule</span>
-            </button>
-        </a>
-        <a [routerLink]="['profile']" color="primary">
-            <button mat-button>
-                <mat-icon class="custom-color-text">home</mat-icon>
-                <span class="custom-color-text">profile</span>
-            </button>
-        </a>
-    </mat-sidenav>
-    <mat-sidenav-content>
+          </div>
+          <button class="btn"  (click)="singout()" >signout</button>
+          
+        </div>
+      </nav>
+      
+      <!-- End Navbar -->
+      <div class="content"   [ngStyle]="{ 'padding': isSidebarMini ? '78px 30px 30px 280px' : '78px 30px 30px 28px' }">
         <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+        
+      </div>
+     
+    </div>
+
+  </div>
+  
+  
+

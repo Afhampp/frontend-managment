@@ -16,7 +16,7 @@ import { StudentServiceService } from 'src/app/service/student-service.service';
 export class StudentAttendaceComponent implements OnInit {
 
   studentid!:string
-  displayedColumns: string[] = ['name', 'subject','present', 'absent', 'view'];
+  displayedColumns: string[] = ['name', 'subject','present', 'absent'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -59,7 +59,7 @@ export class StudentAttendaceComponent implements OnInit {
 
   getattendancedata(){
      this.studentservice.getattendacedata() .subscribe((value)=>{
-      console.log(value.teacherAttendanceArray)
+     
       this.dataSource=new MatTableDataSource(value.teacherAttendanceArray)
       this.dataSource.paginator=this.paginator
       this.dataSource.sort=this.sort

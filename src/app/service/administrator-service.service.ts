@@ -10,7 +10,7 @@ import { Form } from '@angular/forms';
 export class AdministratorServiceService {
 
   constructor(private http:HttpClient) { }
-  url='http://localhost:3000/admin/'
+  private url='http://localhost:3000/admin/'
 
   adminlogin(data:logindata):Observable<any>{
     return this.http.post<logindata>(this.url+'login',data)

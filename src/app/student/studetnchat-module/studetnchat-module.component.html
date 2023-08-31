@@ -1,55 +1,132 @@
-<div class="container clearfix">
-  <div class="left-side">
-    <nav class="message-nav">
-      <!-- Loop through all students -->
-      <div class="nav-link" *ngFor="let student of allStudentsData" (click)="sendMessageToStudent(student)">
-        {{ student.name }}
+<div class="container-2">
+
+  <!-- Page header start -->
+  <div class="page-title">
+      <div class="row gutters">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <h5 class="title">Chat App</h5>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"> </div>
       </div>
-      <div class="nav-link" *ngFor="let group of groups" (click)="sendMessageToGroup(group)">
-        {{ group.name }}
-      </div>
-    </nav>
   </div>
-  
-    <!-- Right side: Display messages -->
-    <div class="right-side">
-      <div class="chat-header">
-        <h2> Chat</h2>
-        <h3 *ngIf="selectedStudent" class="selected-student">{{ selectedStudent.name }}</h3>
-        <h3 *ngIf="selectedGroup" class="selected-student">{{ selectedGroup.name }}</h3>
-      </div>
-      <div class="chat-messages">
-        <div *ngFor="let message of allMessages" class="message-container">
-          <div [ngClass]="{'left-side': message.sender === stundetName, 'right-side': message.sender !== stundetName}">
-            <div class="message-content">{{ message.content }}</div>
-            <div class="user-info">
-              <span class="message-time">{{ message.timestamp | date: 'hh:mm a' }}</span>
-            </div>
+  <!-- Page header end -->
+
+  <!-- Content wrapper start -->
+  <div class="content-wrapper">
+
+      <!-- Row start -->
+      <div class="row gutters">
+
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+              <div class="card m-0">
+
+                  <!-- Row start -->
+                  <div class="row no-gutters">
+                      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                          <div class="users-container">
+                              <div class="chat-search-box">
+                                  <div class="input-group">
+                                      <input [(ngModel)]="search" class="form-control" placeholder="Search"  >
+                                      <div class="input-group-btn">
+                                          <button (click)="submit()" type="button" class="btn btn-info">
+                                              <i class="fa fa-search"></i>
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <ul class="users">
+                                  <li class="person" data-chat="person1"   *ngFor="let student of allStudentsData" (click)="sendMessageToStudent(student)">
+                                      <div class="user">
+                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                          <span class="status busy"></span>
+                                      </div>
+                                      <p class="name-time">
+                                          <span class="name"> {{ student.name }}</span>
+                                        
+                                      </p>
+                                  </li>
+                                  <li class="person" data-chat="person1"   *ngFor="let group of groups" (click)="sendMessageToGroup(group)">
+                                      <div class="user">
+                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                          <span class="status busy"></span>
+                                      </div>
+                                      <p class="name-time">
+                                          <span class="name"> {{ group.name}}</span>
+                                        
+                                      </p>
+                                  </li>
+                                  
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+                          <div class="selected-user" *ngIf="selectedStudent">
+                              <span>To: <span class="name">{{ selectedStudent.name }}</span></span>
+                          </div>
+                          <div class="selected-user" *ngIf="selectedGroup">
+                              <span>To: <span class="name">{{ selectedGroup.name }}</span></span>
+                          </div>
+                          <div class="chat-container" >
+                              <ul class="chat-box chatContainerScroll" *ngFor="let message of allMessages">
+                                  <li class="chat-left" *ngIf="message.sender === stundetName">
+                                      <div class="chat-avatar">
+                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                          <div class="chat-name">{{message.sender}}</div>
+                                      </div>
+                                      <div class="chat-text">{{ message.content }}</div>
+                                      <div class="chat-hour">{{ message.timestamp | date: 'hh:mm a' }} <span class="fa fa-check-circle"></span></div>
+                                  </li>
+                                  <li class="chat-right"  *ngIf="message.sender !== stundetName">
+                                      <div class="chat-hour">{{ message.timestamp | date: 'hh:mm a' }} <span class="fa fa-check-circle"></span></div>
+                                      <div class="chat-text">{{message.content}}</div>
+                                      <div class="chat-avatar">
+                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                          <div class="chat-name">Sam</div>
+                                      </div>
+                                  </li>
+                                  
+                              </ul>
+                              <ul class="chat-box chatContainerScroll" *ngFor="let message of groupMessages">
+                                  <li class="chat-left" *ngIf="message.sender === stundetName">
+                                      <div class="chat-avatar">
+                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                          <div class="chat-name">{{message.sender}}</div>
+                                      </div>
+                                      <div class="chat-text">{{ message.content }}</div>
+                                      <div class="chat-hour">{{ message.timestamp | date: 'hh:mm a' }} <span class="fa fa-check-circle"></span></div>
+                                  </li>
+                                  <li class="chat-right"  *ngIf="message.sender !== stundetName">
+                                      <div class="chat-hour">{{ message.timestamp | date: 'hh:mm a' }} <span class="fa fa-check-circle"></span></div>
+                                      <div class="chat-text">{{message.content}}</div>
+                                      <div class="chat-avatar">
+                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                          <div class="chat-name">Sam</div>
+                                      </div>
+                                  </li>
+                                  
+                              </ul>
+
+                              <div class="form-group mt-3 mb-0" *ngIf="selectedStudent">
+                                  <textarea [(ngModel)]="messageInput"  class="form-control" rows="3" placeholder="Type your message here...">
+                                      
+                                  </textarea>
+                                  <button (click)="sendMessage()">Send</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Row end -->
+              </div>
+
           </div>
-        </div>
-        <div *ngFor="let message of groupMessages" class="message-container">
-          <div [ngClass]="{'left-side': message.sender === stundetName, 'right-side': message.sender !== stundetName}">
-            <span  *ngIf="message.sender!=stundetName" class="message-time">{{ message.sender}}</span>
-            <div class="message-content">{{ message.content }}</div>
-            
-            <div class="user-info">
-             
-              <span class="message-time">{{ message.timestamp | date: 'hh:mm a' }}</span>
-            </div>
-          </div>
-        </div>
+
       </div>
-      <div class="chat-input" *ngIf="selectedStudent">
-        <div class="input-container">
-          <input type="text" [(ngModel)]="messageInput" placeholder="Type your message">
-          <button (click)="sendMessage()">Send</button>
-        </div>
-      </div>
-      <div class="chat-input" *ngIf="selectedGroup">
-        <div class="input-container">
-          <input type="text" [(ngModel)]="messageInput" placeholder="Type your message">
-          <button (click)="sendGroupMessage()">Send</button>
-        </div>
-      </div>
-    </div>
-  
+      <!-- Row end -->
+
+  </div>
+  <!-- Content wrapper end -->
+
+</div>
+
+
