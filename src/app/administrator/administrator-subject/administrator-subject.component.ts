@@ -47,7 +47,7 @@ export class AdministratorSubjectComponent implements OnInit {
   openDialog(){
   
     this.dialog.open(SubjectaddEditAdministratorComponent,{
-      width:'30%'
+      width:'36%'
     }).afterClosed().subscribe((val)=>{
       if(val=="add"){
         this.getsubjectdata()

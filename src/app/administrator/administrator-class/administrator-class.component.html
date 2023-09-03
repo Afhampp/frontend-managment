@@ -27,9 +27,10 @@
               <ng-container matColumnDef="teacher">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Add teacher </th>
                 <td mat-cell *matCellDef="let row"> 
-                    <button mat-icon-button (click)="addteacher(row)" color="primary">
-                        <mat-icon>library_add</mat-icon>
+                    <button class="btn btn-primary" (click)="addteacher(row)" >
+                        view
                     </button>    
+                    
                 </td>
               </ng-container>
           
@@ -37,16 +38,16 @@
               <ng-container matColumnDef="students">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Add student </th>
                 <td mat-cell *matCellDef="let row"> 
-                    <button mat-icon-button (click)="addstudent(row)" color="primary">
-                      <mat-icon>library_add</mat-icon>
+                    <button class="btn btn-primary" (click)="addstudent(row)" color="primary">
+                      view
                     </button>     
                 </td>
               </ng-container>
               <ng-container matColumnDef="schedule">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>schedule</th>
                 <td mat-cell *matCellDef="let row"> 
-                    <button mat-icon-button (click)="addschedule(row)" color="primary">
-                      <mat-icon>library_add</mat-icon>
+                    <button class="btn btn-primary" (click)="addschedule(row)" color="primary">
+                      view
                     </button>     
                 </td>
               </ng-container>

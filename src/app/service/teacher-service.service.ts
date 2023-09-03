@@ -9,7 +9,7 @@ export class TeacherServiceService {
 
 
   constructor(private http:HttpClient) { }
-   url='http://localhost:3000/teacher/'
+   url='https://www.backendcollage.online/teacher/'
 
   teacherlogin(data:any):Observable<any>{
     return this.http.post<any>(this.url+"login",data)
@@ -94,7 +94,7 @@ export class TeacherServiceService {
     const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
   
-    // Include both parameters in the URL
+  
     return this.http.get<any>(`${this.url}getattedancedate/${rowDataid}?studentId=${studentId}`, requestOptions);
   }
   updateattendace(data:any):Observable<any>{

@@ -27,7 +27,6 @@ export class TeacherViewTableComponent implements OnInit {
   constructor(private activeroute: ActivatedRoute,private dialog:MatDialog,private adminservice:AdministratorServiceService,private ngconfirm:NgConfirmService,private route:Router) {}
 
   ngOnInit(): void {
-    console.log("hai")
     const id = this.activeroute.snapshot.paramMap.get('id');
     this.rowDataid = id;
     this.getteachervalue()
@@ -36,7 +35,7 @@ export class TeacherViewTableComponent implements OnInit {
 
   openDialog(){
     this.dialog.open(TeacherAddTableComponent,{
-      width:'80%',
+      width:'36%',
       data:this.rowDataid
     }).afterClosed().subscribe((val)=>{
       if(val=="save"){

@@ -4,16 +4,15 @@
             <div class="content">
               <form  class="content__form" [formGroup]="forms">
                 <div class="content__inputs">
-                  <label>
-                    <input required="" type="text" formControlName="subject">
-                    <span> subject</span>
-                  </label>
-                  <small *ngIf="forms.controls['subject'].invalid && forms.controls['subject'].touched">
-                    <small class="text-danger" *ngIf="forms.controls['subject'].errors?.['required']">*subject required</small>
-                    <small class="text-danger" *ngIf="forms.controls['subject'].errors?.['trimError']">*space shouldnt be there</small>
-                  </small>
-                  <small  *ngIf="alreadyexist" class="text-danger">*subject already exists</small>
-                  <small  *ngIf="alreadyexistsubject" class="text-danger">*subject already exists</small>
+                  
+                  <mat-form-field appearance="fill">
+                    <mat-label>Subject Name</mat-label>
+                    <input matInput placeholder="Subject Name" type="text" formControlName="subject">
+                    <mat-hint *ngIf="forms.controls['subject'].invalid && forms.controls['subject'].touched">
+                      <mat-hint class="text-danger" *ngIf="forms.controls['subject'].errors?.['required']">*subject required</mat-hint>
+                      <mat-hint class="text-danger" *ngIf="forms.controls['subject'].errors?.['trimError']">*Space should not be there</mat-hint>
+                    </mat-hint>
+                  </mat-form-field>
                 </div>
                
               </form>

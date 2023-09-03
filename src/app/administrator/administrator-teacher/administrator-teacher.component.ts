@@ -44,7 +44,7 @@ export class AdministratorTeacherComponent implements  OnInit {
 
   openDialog(){
     this.dialog.open(SignupComponent,{
-      width:'80%'
+      width:'37%'
     }).afterClosed().subscribe((val)=>{
       if(val=="save"){
         this.getteachervalue()

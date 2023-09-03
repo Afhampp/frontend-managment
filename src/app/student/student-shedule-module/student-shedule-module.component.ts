@@ -43,6 +43,7 @@ export class StudentSheduleModuleComponent implements OnInit {
     
     this.adminservice.getclassschedule(this.rowDataid).subscribe({
       next:(value) => {
+        console.log(value)
       const flattenedData: any[] = value.getdata.reduce((acc: any[], curr: any[]) => {
         return acc.concat(curr);
       }, []);

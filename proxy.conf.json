@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "https://backendcollage.online",
+      "secure": false
+    }
+  }

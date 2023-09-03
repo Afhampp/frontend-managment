@@ -97,7 +97,7 @@ RenderChart() {
           }
         },
         y: {
-          beginAtZero: true // Start y-axis from zero
+          beginAtZero: false // Start y-axis from zero
         }
       },
       plugins: {

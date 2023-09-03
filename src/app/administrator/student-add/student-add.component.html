@@ -1,66 +1,74 @@
-
 <mat-dialog-content class="mat-typography mt-5">
-    <div class="container-fluid">
-        <div class="container">
-            <div class="content">
-              <form  class="content__form" [formGroup]="forms">
-                <div class="content__inputs">
-                  <label>
-                    <input required="" type="text" formControlName="name">
-                    <span> username</span>
-                  </label>
-                  <small *ngIf="forms.controls['name'].invalid && forms.controls['name'].touched">
-                    <small class="text-danger" *ngIf="forms.controls['name'].errors?.['required']">*name required</small>
-                    <small class="text-danger" *ngIf="forms.controls['name'].errors?.['trimError']">*space shouldnt be there</small>
-                  </small>
-                  <label>
-                    <input required="" type="text" formControlName="email">
-                    <span>Email</span>
-                  </label>
-                  <small *ngIf="forms.controls['email'].invalid && forms.controls['email'].touched">
-                    <small class="text-danger" *ngIf="forms.controls['email'].errors?.['required']">*email required</small>
-                    <small class="text-danger" *ngIf="forms.controls['email'].errors?.['email']">*formatt required</small>
-                  </small>
-                  <label>
-                    <input required="" type="text" formControlName="phone">
-                    <span>Phone Number</span>
-                  </label>
-                  <small *ngIf="forms.controls['phone'].invalid && forms.controls['phone'].touched ||forms.controls['phone'].dirty">
-                    
-                    <small class="text-danger" *ngIf="forms.controls['phone'].errors?.['minlength']">*min 10 needed</small>
-                    <small class="text-danger" *ngIf="forms.controls['phone'].errors?.['maxlength']">*max 10 only needed</small>
-                    <small class="text-danger" *ngIf="forms.controls['phone'].errors?.['required']">*phone required</small>
-                    <small class="text-danger" *ngIf="forms.controls['phone'].errors?.['pattern']">*should be number</small>
-                    <small class="text-danger" *ngIf="forms.controls['phone'].errors?.['trimError']">*phone required</small>
-                  </small>
-                  
-                  <label *ngIf="updateactive">
-                    <input required="" [type]="type" formControlName="password">
-                    <span>Password</span>
-                    <div class="fa {{eyeicon}}" (click)="triggerye()"></div>
-                  </label>
-                  <small *ngIf="forms.controls['password'].invalid && forms.controls['password'].touched ">
-                    <small class="text-danger" *ngIf="forms.controls['password'].errors?.['required']">*password required</small>
-                  </small>
-                  <label *ngIf="updateactive">
-                    <input required="" [type]="type" formControlName="confirm">
-                    <span>confirm password</span>
-                    <div class="fa {{eyeicon}}" (click)="triggerye()"></div>
-                  </label>
-                  <small *ngIf="forms.controls['confirm'].invalid && forms.controls['confirm'].touched ">
-                    <small class="text-danger" *ngIf="forms.controls['confirm'].errors?.['required']">*confirm password required</small>
-                  </small>
-                  <small class="text-danger"  *ngIf="confirmwrong">*not correct</small>
-                </div>
+  <div class="container-fluid">
+      <div class="container">
+          <div class="content">
+            <form  class="content__form" [formGroup]="forms">
+              <div class="content__inputs">
+                <mat-form-field appearance="fill">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Placeholder" type="text" formControlName="name">
+                  <mat-hint *ngIf="forms.controls['name'].invalid && forms.controls['name'].touched">
+                    <mat-hint class="text-danger" *ngIf="forms.controls['name'].errors?.['required']">*Name required</mat-hint>
+                    <mat-hint class="text-danger" *ngIf="forms.controls['name'].errors?.['trimError']">*Space should not be there</mat-hint>
+                  </mat-hint>
+                </mat-form-field>
                
-              </form>
-            </div>
+                <mat-form-field appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="Placeholder" type="text" formControlName="email">
+                  <mat-hint *ngIf="forms.controls['email'].invalid && forms.controls['email'].touched">
+                    <mat-hint class="text-danger" *ngIf="forms.controls['email'].errors?.['required']">*email required</mat-hint>
+                    <mat-hint class="text-danger" *ngIf="forms.controls['email'].errors?.['email']">*formatt required</mat-hint>
+                  </mat-hint>
+                </mat-form-field>
+               
+                <mat-form-field appearance="fill">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput placeholder="Placeholder" type="text" formControlName="phone">
+                  <mat-hint *ngIf="forms.controls['phone'].invalid && forms.controls['phone'].touched">
+                    <mat-hint  class="text-danger" *ngIf="forms.controls['phone'].errors?.['minlength']">*min 10 needed</mat-hint>
+                    <mat-hint class="text-danger" *ngIf="forms.controls['phone'].errors?.['maxlength']">*max 10 only needed</mat-hint>
+                    <mat-hint class="text-danger" *ngIf="forms.controls['phone'].errors?.['pattern']">*should be number</mat-hint>
+                     <mat-hint class="text-danger" *ngIf="forms.controls['phone'].errors?.['required']">*phone required</mat-hint>
+                     <mat-hint class="text-danger" *ngIf="forms.controls['phone'].errors?.['trimError']">*phone required</mat-hint>
+
+                  </mat-hint>
+                </mat-form-field>
+                
+              
+                <mat-form-field appearance="fill" *ngIf="updateactive">
+                  <mat-label>Password</mat-label>
+                  <input matInput placeholder="Placeholder" [type]="type" formControlName="password">
+                  <!-- <div class="fa {{eyeicon}}" (click)="triggerye()"></div> -->
+
+                  <mat-hint *ngIf="forms.controls['password'].invalid && forms.controls['password'].touched">
+                    <mat-hint class="text-danger" *ngIf="forms.controls['password'].errors?.['required']">*password required</mat-hint>
+                  </mat-hint>
+                </mat-form-field>
+              
+                <mat-form-field appearance="fill" *ngIf="updateactive">
+                  <mat-label>Confirm Password</mat-label>
+                  <input matInput placeholder="Placeholder" [type]="type" formControlName="confirm">
+                  <!-- <div class="fa {{eyeicon}}" (click)="triggerye()"></div> -->
+
+                  <mat-hint *ngIf="forms.controls['confirm'].invalid && forms.controls['confirm'].touched">
+                    <mat-hint class="text-danger" *ngIf="forms.controls['confirm'].errors?.['required']">*confirm required</mat-hint>
+                  </mat-hint>
+                  <mat-hint class="text-danger"  *ngIf="confirmwrong">*not correct</mat-hint>
+                </mat-form-field>
+              
+               
+              </div>
+             
+             
+            </form>
           </div>
         </div>
-      </mat-dialog-content>
-      <mat-dialog-actions align="end">
-        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-        <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="Onsubmit()" >{{actionbut}}</button>
-      </mat-dialog-actions> 
-          
-          
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="Onsubmit()" >{{actionbut}}</button>
+    </mat-dialog-actions> 
+        
+        

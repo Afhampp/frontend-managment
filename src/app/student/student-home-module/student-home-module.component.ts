@@ -18,16 +18,11 @@ export class StudentHomeModuleComponent implements OnInit{
    
   }
 
-  toggleSidebar() {
-    console.log('Toggle sidebar clicked');
-    this.isSidebarMini = !this.isSidebarMini;
-  }
+  
 
   singout(){
     sessionStorage.removeItem('student')
     this.route.navigate(['/'])
   }
-  isActive(routePath: string): boolean {
-    return this.route.isActive(routePath, false);
-  }
+  
 }

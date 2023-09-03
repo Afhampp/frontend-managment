@@ -46,7 +46,7 @@ export class AdministratorClassComponent implements OnInit{
 
   openDialog(){
     this.dialog.open(ClassAddAdministratorComponent,{
-      width:'80%'
+      width:'36%'
     }).afterClosed().subscribe((val)=>{
       if(val=="save"){
         this.getclass()

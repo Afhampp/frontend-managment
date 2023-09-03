@@ -31,9 +31,7 @@ export class AdministratorSchedulingComponent implements OnInit {
 
  
 
-  back(){
-    this.route.navigate(['/administrator/adminhome/adminclass'])
-  }
+
   
 
  
@@ -78,7 +76,7 @@ export class AdministratorSchedulingComponent implements OnInit {
     const rowdataid=this.rowDataid
     row.rowdataid=rowdataid
     this.dialog.open(AdministratorAddSchedulingComponent,{
-      width:'80%',
+      width:'38%',
       data:row
     }).afterClosed().subscribe((val)=>{
       if(val=="updated"){

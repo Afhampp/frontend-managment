@@ -1,53 +1,70 @@
-<div class="d-md-flex half">
-  <div class="bg" style="background-image: url('images/bg_1.jpg');"></div>
-  <div class="contents">
+<!-- component -->
 
-    <div class="container">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-md-12">
-          <div class="form-block mx-auto">
-            <div class="text-center mb-5">
-              <h3 class="text-uppercase">Login to <strong>Colorlib</strong></h3>
-            </div>
-            <form action="#" method="post">
-              <div class="form-group first">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
-              </div>
-              <div class="form-group last mb-3">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" placeholder="Your Password" id="password">
-              </div>
-              
-              <div class="d-sm-flex mb-5 align-items-center">
-                <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
-                  <input type="checkbox" checked="checked"/>
-                  <div class="control__indicator"></div>
-                </label>
-                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
-              </div>
+ 
 
-              <input type="submit" value="Log In" class="btn btn-block py-2 btn-primary">
+<div class="h-screen flex">
+          <div class="hidden lg:flex w-full lg:w-1/2 login_img_section
+          justify-around items-center">
+            <div 
+                  class=" 
+                  bg-black 
+                  opacity-20 
+                  inset-0 
+                  z-0"
+                  >
 
-              <span class="text-center my-3 d-block">or</span>
+                  </div>
+                  <div class="w-full mx-auto px-20 flex-col items-center space-y-6">
+                    <h1 class="text-white font-bold text-4xl font-sans">Student Login Portal</h1>
+                    <p class="text-white mt-1">Access your student account</p>
+                    <div class="flex justify-center lg:justify-start mt-6">
               
-              
-              <div class="">
-              <a href="#" class="btn btn-block py-2 btn-facebook">
-                <span class="icon-facebook mr-3"></span> Login with facebook
-              </a>
-              <a href="#" class="btn btn-block py-2 btn-google"><span class="icon-google mr-3"></span> Login with Google</a>
-              </div>
-            </form>
+                      <p class="text-white text-lg">Log in to your student account to:</p>
+                      <ul class="list-disc text-white pl-8">
+                        <li>Access course materials</li>
+                        <li>Submit assignments</li>
+                        <li>Connect with instructors</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
+            <div class="w-full px-8 md:px-32 lg:px-24">
+            <form (ngSubmit)="onsubmit()" class="bg-white rounded-md shadow-2xl p-5"  [formGroup]="loginform">
+              <h1 class="text-gray-800 font-bold text-2xl mb-1"></h1>
+              <p class="text-sm font-normal text-gray-600 mb-8">Student Login</p>
+              <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                </svg>
+                <input id="email" class=" pl-2 w-full outline-none border-none" type="email" name="email" placeholder="Email Address" formControlName="email"/>
 
-  
-</div>
-<div class="container-fluid">
+              </div>
+              <small *ngIf="emailmesssage" class="text-danger" >*invalid email</small>
+              <div class="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                </svg>
+                <input class="pl-2 w-full outline-none border-none"  [type]="type" name="password" id="password" placeholder="Password" formControlName="password" />
+                <div class="fa {{eyeicon}}" (click)="triggerye()"></div>
+              </div>
+              <small *ngIf="passwordmessage" class="text-danger">*invalid password</small>
+              <button type="submit" class="block w-full bg-indigo-600 mt-5 py-2 rounded-2xl hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2">Login</button>
+              <div class="flex justify-between mt-4">
+                <span class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Forgot Password ?</span>
+
+                <a href="#" class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Don't have an account yet?</a>
+              </div>
+              
+            </form>
+            </div>
+            
+          </div>
+      </div>
+
+
+<!-- <div class="container-fluid">
   <div class="container">
       <div class="content">
         <h2>Student Login</h2>
@@ -85,5 +102,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
     

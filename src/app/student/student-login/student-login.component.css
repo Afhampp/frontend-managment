@@ -1,4 +1,4 @@
-.content i {
+/* .content i {
     margin-bottom: 41px;
   }
   .container-fluid{
@@ -139,4 +139,7 @@
   .content__form button:active:not(:hover) {
     background: rgb(0, 149, 246);
     opacity: .7;
+  } */
+  .login_img_section {
+    background: linear-gradient(rgba(2,2,2,.7),rgba(0,0,0,.7)),url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fHN0dWRlbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60) center center;
   }

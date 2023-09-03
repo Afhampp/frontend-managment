@@ -18,7 +18,7 @@ export class ChatServiceService {
 
   constructor() {
     // Connect to the Socket.io server (make sure to provide the correct server URL)
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://www.backendcollage.online/');
   }
 
   // Function to send a chat message to the server

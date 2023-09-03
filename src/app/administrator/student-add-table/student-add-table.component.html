@@ -12,7 +12,6 @@
                     <mat-select formControlName="students" multiple >
                       <mat-option *ngFor="let topping of teacherlist" [value]="topping.id">{{topping.name}}</mat-option>
                     </mat-select>
-                    <span>students</span>
                   </mat-form-field>
                   
                   <small *ngIf="forms.controls['students'].invalid && forms.controls['students'].touched">

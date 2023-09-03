@@ -1,18 +1,18 @@
 table {
     width: 100%;
-    background-color: #27293d;
+    background-color: black;
     color: rgba(255, 255, 255, 0.7);
   }
   
   .mat-mdc-form-field {
-    background-color: #27293d;
+    background-color: black;
     color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
     width: 100%;
   }
   
   td, th {
-    background-color: #27293d;
+    background-color: black;
     color: rgba(255, 255, 255, 0.7);
     width: 10%;
   }
@@ -24,7 +24,7 @@ table {
   } 
   
   ::ng-deep.mat-mdc-paginator-container{
-    background-color: #27293d;
+    background-color: black;
     color: rgba(255, 255, 255, 0.7);
   }
 

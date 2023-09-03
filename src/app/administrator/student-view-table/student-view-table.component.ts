@@ -34,7 +34,7 @@ export class StudentViewTableComponent implements OnInit {
 
   openDialog(){
     this.dialog.open(StudentAddTableComponent,{
-      width:'80%',
+      width:'36%',
       data:this.rowDataid
     }).afterClosed().subscribe((val)=>{
       if(val=="save"){

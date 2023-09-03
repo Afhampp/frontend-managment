@@ -35,8 +35,12 @@ export class StudentLoginComponent implements OnInit {
   }
 
   onsubmit(){
+    console.log("hai")
     if(this.loginform.valid){
-      this.serive.studentlogin(this.loginform.value).subscribe((value)=>{
+      console.log("hai")
+      this.serive.studentlogin(this.loginform.value).subscribe({
+        next:(value)=>{
+          console.log("koiii")
         this.emailmesssage=false
         this.passwordmessage=false
         if(value.status=='success'){
@@ -55,7 +59,10 @@ export class StudentLoginComponent implements OnInit {
             this.passwordmessage=true
           }
         }
-      })
+      },
+      error:(er)=>{
+        console.log(er)
+      }})
     }
   }
 }

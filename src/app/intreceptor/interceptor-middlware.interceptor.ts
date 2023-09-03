@@ -30,15 +30,7 @@ export class InterceptorMiddlwareInterceptor implements HttpInterceptor {
     }
 
     return next.handle(req).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 502) {
-          this.toastr.error('Bad Gateway: Please try again later', 'Error');
-        }
-       
-
-        // Re-throw the error to propagate it further
-        return throwError(error);
-      })
+     
     );
    
   }

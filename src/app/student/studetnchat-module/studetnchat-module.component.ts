@@ -98,6 +98,7 @@ search!:string
     }
   }
   public sendMessage() {
+    console.log("hai")
 
       // Create a new chat message object with the sender and other details
       const newMessage: ChatMessage = {
@@ -148,7 +149,6 @@ search!:string
       this.selectedStudent=null
       group.studentid = this.studentid;
       this.selectedGroup = group;
-      console.log(this.selectedGroup)
   
       // Emit the "select-student" event instead of "chat-message"
       this.chatService.selectgroupforstudent(this.selectedGroup).subscribe(
@@ -170,7 +170,7 @@ search!:string
       content: this.messageInput,
      receiver:this.selectedGroup?._id
     };
-    console.log(newMessage)
+    this.messageInput=''
 
     this.chatService.sendGroupChatstudent(newMessage).subscribe(
       () => {
@@ -182,17 +182,7 @@ search!:string
     );
   }
 
-  submit(){
-
-    this.filteredStudents = this.allStudentsData.filter(student =>
-      student.name.toLowerCase().includes(this.search.toLowerCase())
-    );
-
-    this.filteredGroups = this.groups.filter(group =>
-      group.name.toLowerCase().includes(this.search.toLowerCase())
-    );
-    
-  }
+ 
   
 
   
