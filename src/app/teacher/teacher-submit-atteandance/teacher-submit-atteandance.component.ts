@@ -32,6 +32,7 @@ export class TeacherSubmitAtteandanceComponent implements OnInit {
     const id = this.activeroute.snapshot.paramMap.get('id');
     this.rowDataid = id;
     this.teacherservice.getteacherid().subscribe((value)=>{
+      console.log(value)
       this.teacherid=value.teacherid
     })
     this.getattendancedata()
@@ -41,7 +42,7 @@ export class TeacherSubmitAtteandanceComponent implements OnInit {
   openDialog(row:any){
   row.classid=this.rowDataid
     this.dialog.open(TeacherAttendanceFormComponent,{
-      width:'80%',
+      width:'37%',
       data:row
     }).afterClosed().subscribe((val)=>{
       if(val=="save"){
@@ -51,9 +52,7 @@ export class TeacherSubmitAtteandanceComponent implements OnInit {
   }
   
 
-  back(){
-    this.route.navigate(['/teacher/home/attendacesubmittion'])
-  }
+ 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

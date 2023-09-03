@@ -47,7 +47,7 @@ export class TeatchernoteModuleComponent implements OnInit {
 
   openDialog(){
     this.dialog.open(TeatcheAddRnoteModuleComponent,{
-      width:'50%'
+      width:'37%'
     }).afterClosed().subscribe((val)=>{
       if(val=="save"){
         this.getteachervalue()

@@ -53,8 +53,7 @@ export class StudentNoteModuleComponent implements OnInit {
   getteachervalue() {
     this.serivce.getnotes().subscribe({
       next: (value) => {
-        console.log(value.getdata);
-        console.log(this.studentid);
+       
   
         // Map through the assignments to update the subfile based on student's submission
        

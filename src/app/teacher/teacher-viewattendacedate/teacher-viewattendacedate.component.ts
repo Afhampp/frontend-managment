@@ -47,7 +47,7 @@ export class TeacherViewattendacedateComponent implements OnInit {
     row.classid=this.rowDataid
     row.studentId=this.rowData.student._id
       this.dialog.open(TeacherUpdateattendaceComponent,{
-        width:'80%',
+        width:'37%',
         data:row
       }).afterClosed().subscribe((val)=>{
         if(val=="save"){

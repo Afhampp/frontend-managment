@@ -31,22 +31,10 @@ export class StudentAttendaceComponent implements OnInit {
   }
 
 
-  // openDialog(row:any){
-  // row.classid=this.rowDataid
-  //   this.dialog.open(TeacherAttendanceFormComponent,{
-  //     width:'80%',
-  //     data:row
-  //   }).afterClosed().subscribe((val)=>{
-  //     if(val=="save"){
-  //       this.getattendancedata()
-  //     }
-  //   })
-  // }
+ 
   
 
-  back(){
-    this.route.navigate(['/teacher/home/attendacesubmittion'])
-  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

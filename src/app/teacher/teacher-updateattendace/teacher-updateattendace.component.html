@@ -5,7 +5,7 @@
               <form  class="content__form" [formGroup]="forms">
                 <div class="content__inputs">
                   
-                  <mat-form-field>
+                  <mat-form-field apperance="fill">
                     <mat-label>teachers</mat-label>
                   
                     <mat-select formControlName="status" >
@@ -17,6 +17,7 @@
                   <small *ngIf="forms.controls['status'].invalid && forms.controls['status'].touched">
                     <small class="text-danger" *ngIf="forms.controls['status'].errors?.['required']">*status required</small>
                   </small>
+                  
                 </div>
                
                 <small *ngIf="confirmwrong">already attendace taken at this period</small>

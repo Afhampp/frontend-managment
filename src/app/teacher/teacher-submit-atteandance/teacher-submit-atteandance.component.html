@@ -1,6 +1,5 @@
 <h2>administrator-teacher</h2>
 <div class="container" style="padding-top: 20px;">
-  <button mat-icon-button color="primary" (click)="back()"><mat-icon>backspace</mat-icon></button>
 
     <div class="container added">
         
@@ -32,10 +31,10 @@
                 <td mat-cell *matCellDef="let row"> {{row.absentCount}} </td>
               </ng-container>
               <ng-container matColumnDef="view">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> view </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status of attendace </th>
                 <td mat-cell *matCellDef="let row"> 
                   <button class="btn btn-primary" (click)="viewdata(row)" color="warn">
-                    view
+                    Status
                 </button> 
                    </td>
               </ng-container>
@@ -45,7 +44,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                 <td mat-cell *matCellDef="let row"> 
                     <button class="btn btn-success" (click)="openDialog(row)" color="warn">
-                        submit
+                        Attendace
                     </button>     
                 </td>
               </ng-container>

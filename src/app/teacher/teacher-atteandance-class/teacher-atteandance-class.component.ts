@@ -52,7 +52,6 @@ export class TeacherAtteandanceClassComponent implements OnInit{
       this.dataSource.sort=this.sort
     },
     error:(error)=>{
-   
       if (error.error.message === 'session has expired') {
         Swal.fire({
           icon: 'error',

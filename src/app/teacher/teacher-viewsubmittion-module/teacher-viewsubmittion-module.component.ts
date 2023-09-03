@@ -39,7 +39,7 @@ export class TeacherViewsubmittionModuleComponent implements OnInit {
   opendialog(row:any){
     row.classid=this.rowDataid
       this.dialog.open(TeacherMarkAssigmentComponent,{
-        width:'50%',
+        width:'37%',
         data:row
       }).afterClosed().subscribe((val)=>{
         if(val=="save"){

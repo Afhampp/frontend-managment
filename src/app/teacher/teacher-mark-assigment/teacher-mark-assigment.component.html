@@ -4,7 +4,7 @@
         <div class="content">
           <form class="content__form" [formGroup]="forms" enctype="multipart/form-data">
             <div class="content__inputs">
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="fill">
                 <mat-label>MARK</mat-label>
                 <input matInput placeholder="Placeholder" type="number" formControlName="mark">
                 <mat-hint *ngIf="forms.controls['mark'].invalid && forms.controls['mark'].touched">

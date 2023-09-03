@@ -20,6 +20,8 @@ export class TeatcheAddRnoteModuleComponent implements OnInit {
   actionbut:string="save"
   toppingList!: { name: string; id: string }[]
   notpdf:boolean=false
+  today = new Date();
+  minDate: Date = this.today;
   constructor(private builder:FormBuilder,private serivce:TeacherServiceService,private matdialogref:MatDialogRef<TeatcheAddRnoteModuleComponent>,@Inject(MAT_DIALOG_DATA) public editdata:any,private route:Router){}
  
  
