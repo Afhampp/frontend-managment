@@ -16,7 +16,6 @@ import { TeacherLoginGuard } from './router-gaurd/teacherloginguard';
 import { TeacherSheduleClassComponent } from './teacher-shedule-class/teacher-shedule-class.component';
 import { TeacherSheduleModuleComponent } from './teacher-shedule-module/teacher-shedule-module.component';
 import { TeacherClassTeacherComponent } from './teacher-class-teacher/teacher-class-teacher.component';
-import { TeachermockComponentComponent } from './teachermock-component/teachermock-component.component';
 
 const routes: Routes = [
   {path:'',canActivate: [TeacherLoginGuard],component:TeacherLoginComponent},
@@ -34,7 +33,6 @@ const routes: Routes = [
     {path:'attedancedate/:id',component:TeacherViewattendacedateComponent},
     {path:'sheduleclass',component:TeacherSheduleClassComponent},
     {path:'shedule/:id',component:TeacherSheduleModuleComponent},
-    {path:'mock',component:TeachermockComponentComponent}
   ]}
 ];
 
