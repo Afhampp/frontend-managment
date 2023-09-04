@@ -3,6 +3,7 @@ import { HttpClient, HttpHandler, HttpHeaders, HttpRequest } from '@angular/comm
 import { Observable } from 'rxjs';
 import { logindata }from '../administrator/logininterface'
 import { Form } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Form } from '@angular/forms';
 export class AdministratorServiceService {
 
   constructor(private http:HttpClient) { }
-  private url='https://www.backendcollage.online/admin/'
+  private url=environment.adminUrl
 
   adminlogin(data:logindata):Observable<any>{
     return this.http.post<logindata>(this.url+'login',data)

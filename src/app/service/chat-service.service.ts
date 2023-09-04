@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 interface ChatMessage {
   sender: string;
@@ -18,7 +19,7 @@ export class ChatServiceService {
 
   constructor() {
     // Connect to the Socket.io server (make sure to provide the correct server URL)
-    this.socket = io('https://www.backendcollage.online/');
+    this.socket = io(environment.socketUrl);
   }
 
   // Function to send a chat message to the server

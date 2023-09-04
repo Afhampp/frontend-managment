@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class StudentServiceService {
 
   constructor(private http:HttpClient) { }
-  private url=environment.apiUrl
+  private url=environment.studentUrl
 
    studentlogin(data:any):Observable<any>{
     return this.http.post<any>(this.url+"login",data)

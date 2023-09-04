@@ -1,7 +1,9 @@
 export const environment = {
     
     production: false,
-    apiUrl: 'https://www.backendcollage.online/student/', // Your API URL for development
-      
+    studentUrl: 'https://www.backendcollage.online/student/', 
+    teacherUrl: 'https://www.backendcollage.online/teacher/',
+    socketUrl:  'https://www.backendcollage.online/',
+    adminUrl:   'https://www.backendcollage.online/admin/'
       
 };
