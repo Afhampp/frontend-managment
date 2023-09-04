@@ -66,7 +66,7 @@ export class StudentAssigmentclaassModuleComponent implements OnInit {
     this.serivce.getassignemnt().subscribe({
       next: (value) => {
         
-  
+        console.log(value)
         value.getdata.forEach((assignment: any) => {
           const submission = assignment.submittion.find((sub: any) => sub.student === this.studentid);
           if (submission) {
