@@ -35,6 +35,7 @@ export class TeacherLoginComponent implements OnInit {
   }
 
   onsubmit(){
+    console.log("hai")
     if(this.loginform.valid){
       this.serive.teacherlogin(this.loginform.value).subscribe((value)=>{
         this.emailmesssage=false
