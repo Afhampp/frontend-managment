@@ -1,6 +1,7 @@
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class StudentServiceService {
 
   constructor(private http:HttpClient) { }
-  private url='https://www.backendcollage.online/student/'
+  private url=environment.apiUrl
 
    studentlogin(data:any):Observable<any>{
     return this.http.post<any>(this.url+"login",data)
