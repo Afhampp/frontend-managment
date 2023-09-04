@@ -58,16 +58,18 @@
                   </mat-form-field>
                 
                   <mat-form-field>
-                    <mat-label>teachers</mat-label>
+                    <mat-label>Subject</mat-label>
                   
                     <mat-select formControlName="Subject"  >
                       <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   
-                  <small *ngIf="forms.controls['subject'].invalid && forms.controls['subject'].touched">
-                    <small class="text-danger" *ngIf="forms.controls['subject'].errors?.['required']">*subject required</small>
-                  </small>
+                  
+                  <mat-hint *ngIf="forms.controls['subject'].invalid && forms.controls['subject'].touched">
+                    <mat-hint class="text-danger" *ngIf="forms.controls['subject'].errors?.['required']">*subject required</mat-hint>
+                  </mat-hint>
+                  <mat-hint class="text-danger"  *ngIf="confirmwrong">*not correct</mat-hint>
                 </div>
                
                
