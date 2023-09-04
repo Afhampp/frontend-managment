@@ -57,7 +57,7 @@ export class StudentAddComponent implements OnInit {
   Onsubmit(){
     if(!this.editdata){
     if(this.forms.valid){
-      console.log(this.forms.value)
+    
       this.serivce.addstudent(this.forms.value).subscribe({
         next:(value)=>{
         if(value.status=="success"){

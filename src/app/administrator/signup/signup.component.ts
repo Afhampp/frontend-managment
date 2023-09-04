@@ -62,7 +62,7 @@ export class SignupComponent implements OnInit {
     
     if(!this.editdata){
     if(this.forms.valid){
-      console.log("hai")
+      console.log(this.forms.value)
       this.serivce.teacheraddd(this.forms.value).subscribe((value)=>{
         console.log(value)
         if(value.status=="success"){
