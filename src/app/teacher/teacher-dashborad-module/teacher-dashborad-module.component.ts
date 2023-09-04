@@ -66,47 +66,57 @@ ngOnInit(): void {
 
 
 RenderChart() {
-  
   new Chart("piechart", {
     type: 'doughnut',
     data: {
       labels: ['Class', 'Student'],
       datasets: [{
         data: this.data,
-        backgroundColor: ['#ff9c00', '#6326c1'], // Example colors for the slices
+        backgroundColor: ['#ff9c00', '#6326c1'],
         borderWidth: 1
       }]
     },
-  }),
+   
+  });
+
   new Chart("barchart", {
     type: 'bar',
     data: {
       labels: this.classname,
       datasets: [{
         data: this.attendace,
-        backgroundColor: ['#ff9c00'], // Example colors for the slices
+        backgroundColor: ['#ff9c00'],
         borderWidth: 1,
-        barPercentage: 0.1
+        barPercentage: .2
       }]
     },
     options: {
       scales: {
         x: {
           grid: {
-            display: false // Hide x-axis grid lines
+            display: false
+          },
+          ticks: {
+            font: {
+              size: 10 // Adjust the font size
+            }
           }
         },
         y: {
-          beginAtZero: false // Start y-axis from zero
+          beginAtZero: true,
+          grid:{
+            display:false
+          }
         }
       },
       plugins: {
         legend: {
-          display: false // Hide the legend
+          display: false
         }
       }
     }
   });
 }
+
 
 }

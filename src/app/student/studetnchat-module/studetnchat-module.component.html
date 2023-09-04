@@ -1,138 +1,7 @@
-<!-- <div class="container-2"> -->
-
-  <!-- Page header start -->
-  <!-- <div class="page-title">
-      <div class="row gutters">
-          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-              <h5 class="title">Chat App</h5>
-          </div>
-          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"> </div>
-      </div>
-  </div> -->
-  <!-- Page header end -->
-
-  <!-- Content wrapper start -->
-  <!-- <div class="content-wrapper"> -->
-
-      <!-- Row start -->
-      <!-- <div class="row gutters">
-
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-              <div class="card m-0"> -->
-
-                  <!-- Row start -->
-                  <!-- <div class="row no-gutters">
-                      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
-                          <div class="users-container">
-                              <div class="chat-search-box">
-                                  <div class="input-group">
-                                      <input [(ngModel)]="search" class="form-control" placeholder="Search"  >
-                                      <div class="input-group-btn">
-                                          <button (click)="submit()" type="button" class="btn btn-info">
-                                              <i class="fa fa-search"></i>
-                                          </button>
-                                      </div>
-                                  </div>
-                              </div>
-                              <ul class="users">
-                                  <li class="person" data-chat="person1"   *ngFor="let student of allStudentsData" (click)="sendMessageToStudent(student)">
-                                      <div class="user">
-                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                          <span class="status busy"></span>
-                                      </div>
-                                      <p class="name-time">
-                                          <span class="name"> {{ student.name }}</span>
-                                        
-                                      </p>
-                                  </li>
-                                  <li class="person" data-chat="person1"   *ngFor="let group of groups" (click)="sendMessageToGroup(group)">
-                                      <div class="user">
-                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                          <span class="status busy"></span>
-                                      </div>
-                                      <p class="name-time">
-                                          <span class="name"> {{ group.name}}</span>
-                                        
-                                      </p>
-                                  </li>
-                                  
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-                          <div class="selected-user" *ngIf="selectedStudent">
-                              <span>To: <span class="name">{{ selectedStudent.name }}</span></span>
-                          </div>
-                          <div class="selected-user" *ngIf="selectedGroup">
-                              <span>To: <span class="name">{{ selectedGroup.name }}</span></span>
-                          </div>
-                          <div class="chat-container" >
-                              <ul class="chat-box chatContainerScroll" *ngFor="let message of allMessages">
-                                  <li class="chat-left" *ngIf="message.sender === stundetName">
-                                      <div class="chat-avatar">
-                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                          <div class="chat-name">{{message.sender}}</div>
-                                      </div>
-                                      <div class="chat-text">{{ message.content }}</div>
-                                      <div class="chat-hour">{{ message.timestamp | date: 'hh:mm a' }} <span class="fa fa-check-circle"></span></div>
-                                  </li>
-                                  <li class="chat-right"  *ngIf="message.sender !== stundetName">
-                                      <div class="chat-hour">{{ message.timestamp | date: 'hh:mm a' }} <span class="fa fa-check-circle"></span></div>
-                                      <div class="chat-text">{{message.content}}</div>
-                                      <div class="chat-avatar">
-                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                          <div class="chat-name">Sam</div>
-                                      </div>
-                                  </li>
-                                  
-                              </ul>
-                              <ul class="chat-box chatContainerScroll" *ngFor="let message of groupMessages">
-                                  <li class="chat-left" *ngIf="message.sender === stundetName">
-                                      <div class="chat-avatar">
-                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                          <div class="chat-name">{{message.sender}}</div>
-                                      </div>
-                                      <div class="chat-text">{{ message.content }}</div>
-                                      <div class="chat-hour">{{ message.timestamp | date: 'hh:mm a' }} <span class="fa fa-check-circle"></span></div>
-                                  </li>
-                                  <li class="chat-right"  *ngIf="message.sender !== stundetName">
-                                      <div class="chat-hour">{{ message.timestamp | date: 'hh:mm a' }} <span class="fa fa-check-circle"></span></div>
-                                      <div class="chat-text">{{message.content}}</div>
-                                      <div class="chat-avatar">
-                                          <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                          <div class="chat-name">Sam</div>
-                                      </div>
-                                  </li>
-                                  
-                              </ul>
-
-                              <div class="form-group mt-3 mb-0" *ngIf="selectedStudent">
-                                  <textarea [(ngModel)]="messageInput"  class="form-control" rows="3" placeholder="Type your message here...">
-                                      
-                                  </textarea>
-                                  <button (click)="sendMessage()">Send</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div> -->
-                  <!-- Row end -->
-              <!-- </div>
-
-          </div>
-
-      </div> -->
-      <!-- Row end -->
-
-  <!-- </div> -->
-  <!-- Content wrapper end -->
-
-<!-- </div> -->
-
-<!-- component -->
-<div class="flex h-screen antialiased text-gray-800">
+<h2>Chat</h2>
+<div class="flex h-screen antialiased text-white">
     <div class="flex flex-row h-full w-full overflow-x-hidden">
-      <div class="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
+      <div class="flex flex-col py-8 pl-6 pr-2 w-64 bg-black flex-shrink-0">
         <div class="flex flex-row items-center justify-center h-12 w-full">
           <div
             class="flex items-center justify-center rounded-2xl text-indigo-700 bg-indigo-100 h-10 w-10"
@@ -200,7 +69,7 @@
       </div>
       <div class="flex flex-col flex-auto h-full p-6">
         <div
-          class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4"
+          class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-black-100 h-full p-4"
         >
           <div class="flex flex-col h-full overflow-x-auto mb-4">
             <div class="flex flex-col h-full">
@@ -214,7 +83,7 @@
                     {{message.sender.charAt(0)}}
                     </div>
                     <div
-                      class="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl"
+                      class="relative ml-3 text-sm bg-slate-900 py-2 px-4 shadow rounded-xl"
                     >
                       <div>{{ message.content }}</div>
                       <small>{{ message.timestamp | date: 'hh:mm a' }}</small>
@@ -230,7 +99,7 @@
                     
                     </div>
                     <div
-                      class="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl"
+                      class="relative mr-3 text-sm bg-lime-800 py-2 px-4 shadow rounded-xl"
                     >
                       <div>{{ message.content }}</div>
                       <small>{{ message.timestamp | date: 'hh:mm a' }}</small>
@@ -247,7 +116,7 @@
                     {{message.sender.charAt(0)}}
                     </div>
                     <div
-                      class="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl"
+                      class="relative ml-3 text-sm bg-slate-900 py-2 px-4 shadow rounded-xl"
                     >
                       <div>{{ message.content }}</div>
                       <small>{{ message.timestamp | date: 'hh:mm a' }}</small>
@@ -263,7 +132,7 @@
                     
                     </div>
                     <div
-                      class="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl"
+                      class="relative mr-3 text-sm bg-lime-800 py-2 px-4 shadow rounded-xl"
                     >
                       <div>{{ message.content }}</div>
                       <small>{{ message.timestamp | date: 'hh:mm a' }}</small>

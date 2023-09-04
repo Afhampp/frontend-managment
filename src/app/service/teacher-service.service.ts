@@ -9,7 +9,7 @@ export class TeacherServiceService {
 
 
   constructor(private http:HttpClient) { }
-   url='https://www.backendcollage.online/teacher/'
+  private url='https://www.backendcollage.online/teacher/'
 
   teacherlogin(data:any):Observable<any>{
     return this.http.post<any>(this.url+"login",data)

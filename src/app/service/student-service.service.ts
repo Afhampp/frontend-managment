@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class StudentServiceService {
 
   constructor(private http:HttpClient) { }
-   url='https://www.backendcollage.online/student/'
+  private url='https://www.backendcollage.online/student/'
 
    studentlogin(data:any):Observable<any>{
     return this.http.post<any>(this.url+"login",data)

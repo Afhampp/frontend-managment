@@ -98,7 +98,7 @@ search!:string
     }
   }
   public sendMessage() {
-    console.log("hai")
+ 
 
       // Create a new chat message object with the sender and other details
       const newMessage: ChatMessage = {
@@ -125,6 +125,7 @@ search!:string
 
   public sendMessageToStudent(student: teacher) {
     if (!this.selectedStudent || this.selectedStudent._id !== student._id) {
+      this.selectedGroup=null
       student.selected = "selected";
       student.studentid = this.studentid;
        
@@ -149,7 +150,7 @@ search!:string
       this.selectedStudent=null
       group.studentid = this.studentid;
       this.selectedGroup = group;
-  
+      console.log(this.selectedGroup)
       // Emit the "select-student" event instead of "chat-message"
       this.chatService.selectgroupforstudent(this.selectedGroup).subscribe(
         () => {

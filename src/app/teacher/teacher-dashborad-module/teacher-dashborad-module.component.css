@@ -17,6 +17,12 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+@media (min-width: 1024px) {
+  .lg\:w-2\/3 {
+    width: 63.666667%;
+  }
+}
+
 
 
 

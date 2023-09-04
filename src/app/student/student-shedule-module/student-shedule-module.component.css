@@ -32,5 +32,12 @@ td, th {
   color: white;
 }
 
-
+.table-container {
+  display: flex;
+  justify-content: center; /* Horizontally center the table */
+  align-items: center; /* Vertically center the table */
+  margin-top: 10px;
+  overflow: auto; /* Add this to enable scrolling if the table content exceeds the viewport */
+  height: 70vh; /* Add this to limit the table's height and enable scrolling */
+}
 

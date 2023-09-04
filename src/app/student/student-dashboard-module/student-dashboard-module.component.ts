@@ -87,7 +87,7 @@ export class StudentDashboardModuleComponent implements OnInit{
           data: this.totalMarks,
           backgroundColor: ['#ba54f5'],
           borderWidth: 1,
-          barThickness: 10
+          barThickness: 20
         }]
       },
       options: {
