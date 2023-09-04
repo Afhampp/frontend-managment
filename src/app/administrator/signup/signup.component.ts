@@ -64,7 +64,9 @@ export class SignupComponent implements OnInit {
     if(this.forms.valid){
       console.log("hai")
       this.serivce.teacheraddd(this.forms.value).subscribe((value)=>{
+        console.log(value)
         if(value.status=="success"){
+          console.log(value.status)
           this.confirmwrong=false
           this.matdialogref.close('save')
         }
