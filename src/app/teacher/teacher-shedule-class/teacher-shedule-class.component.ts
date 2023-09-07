@@ -1,36 +1,38 @@
-import { Component,ViewChild ,OnInit} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatDialog, } from '@angular/material/dialog';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AdministratorServiceService } from 'src/app/service/administrator-service.service';
 import { NgConfirmService } from 'ng-confirm-box';
-import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-shedule-class',
   templateUrl: './teacher-shedule-class.component.html',
-  styleUrls: ['./teacher-shedule-class.component.css']
+  styleUrls: ['./teacher-shedule-class.component.css'],
 })
-export class TeacherSheduleClassComponent implements OnInit{
+export class TeacherSheduleClassComponent implements OnInit {
+  private TeacheClassubcription: Subscription | undefined;
 
   displayedColumns: string[] = ['name', 'teacher'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private dialog:MatDialog,private adminservice:AdministratorServiceService,private ngconfirm:NgConfirmService,private router:Router){
-  
-  }
+  constructor(
+    private dialog: MatDialog,
+    private adminservice: AdministratorServiceService,
+    private ngconfirm: NgConfirmService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.getclass()
+    this.getclass();
   }
-
- 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -41,45 +43,21 @@ export class TeacherSheduleClassComponent implements OnInit{
     }
   }
 
-
-  
-
-  getclass(){
-    this.adminservice.getclass().subscribe({
-      next:(value)=>{
-      this.dataSource=new MatTableDataSource(value.getdata)
-      this.dataSource.paginator=this.paginator
-      this.dataSource.sort=this.sort
-    },
-    error:(error)=>{
-   
-      if (error.error.message === 'session has expired') {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Your session has expired. You will be redirected to the login page.',
-          showCancelButton: false,
-          confirmButtonColor: '#3085d6',
-          confirmButtonText: 'OK'
-        }).then((result) => {
-        
-          if (result.isConfirmed) {
-              sessionStorage.removeItem('teacher')
-              this.router.navigate(['/teacher'])
-          }
-        });
-      }
-  }
-})
+  getclass() {
+    this.TeacheClassubcription = this.adminservice.getclass().subscribe({
+      next: (value) => {
+        this.dataSource = new MatTableDataSource(value.getdata);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+    });
   }
 
-  addteacher(row: any) {
-    this.router.navigate(['/teacher/home/shedule',row._id]);
+  addteacher<T extends { _id: string }>(row: T) {
+    this.router.navigate(['/teacher/home/shedule', row._id]);
   }
-  
 
-
-
-  
+  ngOnDestroy() {
+    this.TeacheClassubcription?.unsubscribe();
+  }
 }
-

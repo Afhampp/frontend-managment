@@ -1,45 +1,59 @@
-import { Component,ViewChild ,OnInit,} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatDialog, } from '@angular/material/dialog';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import { NgConfirmService } from 'ng-confirm-box';
 import { Router } from '@angular/router';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
 import { saveAs } from 'file-saver';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StudentAddasignmentModuleComponent } from '../student-addasignment-module/student-addasignment-module.component';
 import { StudentServiceService } from 'src/app/service/student-service.service';
-import Swal from 'sweetalert2';
-
+import { Assignment } from '../StudentInterface/interfaces';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-student-assigmentclaass-module',
   templateUrl: './student-assigmentclaass-module.component.html',
-  styleUrls: ['./student-assigmentclaass-module.component.css']
+  styleUrls: ['./student-assigmentclaass-module.component.css'],
 })
 export class StudentAssigmentclaassModuleComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'teacher','from', 'to', 'mark','file','subfile','submittion'];
+  private studentAssigmentSubcription: Subscription | undefined;
+  private studentIdtSubcription: Subscription | undefined;
+
+  displayedColumns: string[] = [
+    'name',
+    'teacher',
+    'from',
+    'to',
+    'mark',
+    'file',
+    'subfile',
+    'submittion',
+  ];
   dataSource!: MatTableDataSource<any>;
-  studentid!:string
+  studentid!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private dialog:MatDialog,private teacherservice:TeacherServiceService,private serivce:StudentServiceService,private ngconfirm:NgConfirmService,private route:Router,private http:HttpClient){
-    // if(!sessionStorage.getItem('admin')){
-    //   this.route.navigate(['/administrator'])
-    // }
-  }
+  constructor(
+    private dialog: MatDialog,
+    private teacherservice: TeacherServiceService,
+    private serivce: StudentServiceService,
+    private ngconfirm: NgConfirmService,
+    private route: Router,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-    this.serivce.getstudentid().subscribe((value)=>{
-      this.studentid=value.studentid
-    })
-    this.getteachervalue()
-   
+    this.studentIdtSubcription = this.serivce
+      .getstudentid()
+      .subscribe((value) => {
+        this.studentid = value.studentid;
+      });
+    this.getassigment();
   }
-
- 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -50,71 +64,54 @@ export class StudentAssigmentclaassModuleComponent implements OnInit {
     }
   }
 
-
-  openDialog(row:any){
-    this.dialog.open(StudentAddasignmentModuleComponent,{
-      width:'36%',
-      data:row
-    }).afterClosed().subscribe((val)=>{
-      if(val=="save"){
-        this.getteachervalue()
-      }
-    })
+  openDialog<T>(row: T) {
+    this.dialog
+      .open(StudentAddasignmentModuleComponent, {
+        width: '36%',
+        data: row,
+      })
+      .afterClosed()
+      .subscribe((val) => {
+        if (val == 'save') {
+          this.getassigment();
+        }
+      });
   }
 
-  getteachervalue() {
-    this.serivce.getassignemnt().subscribe({
-      next: (value) => {
-        
-        console.log(value)
-        value.getdata.forEach((assignment: any) => {
-          const submission = assignment.submittion.find((sub: any) => sub.student === this.studentid);
+  getassigment() {
+    this.studentAssigmentSubcription = this.serivce.getassignemnt().subscribe({
+      next: (value: { getdata: Assignment[] }) => {
+        value.getdata.forEach((assignment) => {
+          const submission = assignment.submittion.find(
+            (sub) => sub.student === this.studentid
+          );
           if (submission) {
             assignment.subfile = submission.file;
           }
         });
-  
+
         this.dataSource = new MatTableDataSource(value.getdata);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
-      error:(error)=>{
-   
-        if (error.error.message === 'session has expired') {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Your session has expired. You will be redirected to the login page.',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK'
-          }).then((result) => {
-          
-            if (result.isConfirmed) {
-                sessionStorage.removeItem('student')
-                this.route.navigate(['/'])
-            }
-          });
-        }
-    }
-  });
+    });
   }
 
-  
   downloadPDF(fileName: string) {
-    this.teacherservice.getbaseurl(fileName, { responseType: 'blob' }).subscribe(
-      (response: Blob) => {
-      
-        saveAs(response, fileName);
-      },
-      (error) => {
-        console.error('Error retrieving file:', error);
-      }
-    );
+    this.teacherservice
+      .getbaseurl(fileName, { responseType: 'blob' })
+      .subscribe(
+        (response: Blob) => {
+          saveAs(response, fileName);
+        },
+        (error) => {
+          console.error('Error retrieving file:', error);
+        }
+      );
   }
-  
-  
 
+  ngOnDestroy() {
+    this.studentAssigmentSubcription?.unsubscribe();
+    this.studentIdtSubcription?.unsubscribe();
+  }
 }
-
-

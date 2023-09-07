@@ -25,11 +25,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 import { TeacherRoutingModule } from './teacher-routing.module';
 import { TeacherLoginComponent } from './teacher-login/teacher-login.component';
-import { TeacherSignupComponent } from './teacher-signup/teacher-signup.component';
 import { TeacherHomeModuleComponent } from './teacher-home-module/teacher-home-module.component';
 import { TeacherDashboradModuleComponent } from './teacher-dashborad-module/teacher-dashborad-module.component';
 import { TeacherShowclassModuleComponent } from './teacher-showclass-module/teacher-showclass-module.component';
-import { TeacherViewstudentModuleComponent } from './teacher-viewstudent-module/teacher-viewstudent-module.component';
 import { TeacherAssignmnentUploadComponent } from './teacher-assignmnent-upload/teacher-assignmnent-upload.component';
 import { TeacherAddAssignmnentComponent } from './teacher-add-assignmnent/teacher-add-assignmnent.component';
 import { TeacherViewsubmittionModuleComponent } from './teacher-viewsubmittion-module/teacher-viewsubmittion-module.component';
@@ -52,11 +50,9 @@ import { TeacherClassTeacherComponent } from './teacher-class-teacher/teacher-cl
 @NgModule({
   declarations: [
     TeacherLoginComponent,
-    TeacherSignupComponent,
     TeacherHomeModuleComponent,
     TeacherDashboradModuleComponent,
     TeacherShowclassModuleComponent,
-    TeacherViewstudentModuleComponent,
     TeacherAssignmnentUploadComponent,
     TeacherAddAssignmnentComponent,
     TeacherViewsubmittionModuleComponent,

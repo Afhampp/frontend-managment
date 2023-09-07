@@ -21,7 +21,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { NgConfirmModule } from 'ng-confirm-box';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { ToastrModule } from 'ngx-toastr';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 
@@ -70,7 +69,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
     MatGridListModule,
     MatProgressBarModule,
     RouterModule,
-    ToastrModule.forRoot()
+   
 
     
   ],

@@ -1,24 +1,17 @@
-import { Component ,OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-home-module',
   templateUrl: './teacher-home-module.component.html',
-  styleUrls: ['./teacher-home-module.component.css']
+  styleUrls: ['./teacher-home-module.component.css'],
 })
-export class TeacherHomeModuleComponent implements OnInit{
+export class TeacherHomeModuleComponent implements OnInit {
+  constructor(private route: Router) {}
+  ngOnInit(): void {}
 
-  constructor(private route:Router){
-    if(!sessionStorage.getItem('teacher')){
-      this.route.navigate(['/teacher'])
-    }
-  }
-  ngOnInit(): void {
-   
-  }
-
-  singout(){
-    sessionStorage.removeItem('teacher')
-    this.route.navigate(['/teacher'])
+  singout() {
+    sessionStorage.removeItem('teacher');
+    this.route.navigate(['/teacher']);
   }
 }

@@ -1,83 +1,106 @@
-import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import {
+  getassigment,
+  getattendace,
+  Dashboardvalue,
+  login,
+  notes,
+  getnotes,
+  profile,
+} from '../service/interface/student_inteface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StudentServiceService {
+  constructor(private http: HttpClient) {}
+  private url = environment.studentUrl;
 
-  constructor(private http:HttpClient) { }
-  private url=environment.studentUrl
-
-   studentlogin(data:any):Observable<any>{
-    return this.http.post<any>(this.url+"login",data)
-  }
-
-  getassignemnt():Observable<any>{
-
-    const userType = 'student'
-    const headers = new HttpHeaders().set('userType', userType);
-    const requestOptions = { headers: headers };
-    return this.http.get<any>(this.url+"getassigment",requestOptions)
-  }
-  assigemntsubmittion(data:any,id:any):Observable<any>{
-    const userType = 'student'
-    const headers = new HttpHeaders().set('userType', userType);
-    const requestOptions = { headers: headers };
-    return this.http.put<any>(this.url+'assigmentsubmittion/'+id,data,requestOptions)
-  }
-  getstudentid():Observable<any>{
-    const userType = 'student'
-    const headers = new HttpHeaders().set('userType', userType);
-    const requestOptions = { headers: headers };
-    return this.http.get<any>(this.url+"getstudentid",requestOptions)
+  studentlogin(data: login): Observable<any> {
+    return this.http.post<any>(this.url + 'login', data);
   }
 
-  getnotes():Observable<any>{
-    const userType = 'student'
+  getassignemnt(): Observable<getassigment> {
+    const userType = 'student';
     const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
-    return this.http.get<any>(this.url+"getnotes",requestOptions)
+    return this.http.get<getassigment>(
+      this.url + 'getassigment',
+      requestOptions
+    );
+  }
+  assigemntsubmittion(data: FormData, id: string): Observable<any> {
+    const userType = 'student';
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.put<any>(
+      this.url + 'assigmentsubmittion/' + id,
+      data,
+      requestOptions
+    );
+  }
+  getstudentid(): Observable<notes> {
+    const userType = 'student';
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.get<notes>(this.url + 'getstudentid', requestOptions);
   }
 
-  getattendacedata():Observable<any>{
-    const userType = 'student'
+  getnotes(): Observable<getnotes> {
+    const userType = 'student';
     const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
-    return this.http.get<any>(this.url+"getattendace",requestOptions)
-  }
-  getclass():Observable<any>{
-    const userType = 'student'
-    const headers = new HttpHeaders().set('userType', userType);
-    const requestOptions = { headers: headers };
-    return this.http.get<any>(this.url+"getclass",requestOptions)
+    return this.http.get<getnotes>(this.url + 'getnotes', requestOptions);
   }
 
-  getcountstudent():Observable<any>{
-    const userType = 'student'
+  getattendacedata(): Observable<getattendace> {
+    const userType = 'student';
     const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
-    return this.http.get<any>(this.url+"getcountstudent",requestOptions)
+    return this.http.get<getattendace>(
+      this.url + 'getattendace',
+      requestOptions
+    );
+  }
+  getclass(): Observable<{ classid: string }> {
+    const userType = 'student';
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.get<{ classid: string }>(
+      this.url + 'getclass',
+      requestOptions
+    );
   }
 
-  profilechange(data:any):Observable<any>{
-    const userType = 'student'
+  getcountstudent(): Observable<Dashboardvalue> {
+    const userType = 'student';
     const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
-    return this.http.put<any>(this.url+"profilechange",data,requestOptions)
+    return this.http.get<Dashboardvalue>(
+      this.url + 'getcountstudent',
+      requestOptions
+    );
   }
-  getprofile():Observable<any>{
-    const userType = 'student'
+
+  profilechange(data: any): Observable<any> {
+    const userType = 'student';
     const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
-    return this.http.get<any>(this.url+"getprofile",requestOptions)
+    return this.http.put<any>(this.url + 'profilechange', data, requestOptions);
   }
-  studentforgetpass(data:any):Observable<any>{
-    const userType = 'student'
+  getprofile(): Observable<profile> {
+    const userType = 'student';
     const headers = new HttpHeaders().set('userType', userType);
     const requestOptions = { headers: headers };
-    return this.http.put<any>(this.url+'forgetpass',data,requestOptions)
+    return this.http.get<profile>(this.url + 'getprofile', requestOptions);
+  }
+  studentforgetpass(data: any): Observable<any> {
+    const userType = 'student';
+    const headers = new HttpHeaders().set('userType', userType);
+    const requestOptions = { headers: headers };
+    return this.http.put<any>(this.url + 'forgetpass', data, requestOptions);
   }
 }

@@ -28,7 +28,6 @@ import {MatSelectModule} from '@angular/material/select';
 import { StudentAddComponent } from './student-add/student-add.component';
 import { SudentTableAdministratorComponent } from './sudent-table-administrator/sudent-table-administrator.component';
 import { ClassAddAdministratorComponent } from './class-add-administrator/class-add-administrator.component';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { TeacherAddTableComponent } from './teacher-add-table/teacher-add-table.component';
 import { StudentAddTableComponent } from './student-add-table/student-add-table.component';
 import { StudentViewTableComponent } from './student-view-table/student-view-table.component';
