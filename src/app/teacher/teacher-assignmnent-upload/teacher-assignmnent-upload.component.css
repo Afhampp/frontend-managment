@@ -16,3 +16,7 @@ table {
     display: flex;
     justify-content: right;
   }  
+
+  .mat-elevation-z8{
+    overflow-x: auto;
+  }

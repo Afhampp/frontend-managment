@@ -19,3 +19,6 @@ table {
   .container-fluid{
     margin-top: 27px;
   }
+  .mat-elevation-z8{
+    overflow-x: auto;
+  }

@@ -65,3 +65,7 @@ table {
   
   /* Custom styles for the data rows */
  
+  .mat-elevation-z8{
+    overflow-x: auto;
+  }
+  

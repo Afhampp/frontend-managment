@@ -15,4 +15,8 @@ table {
     margin-right: 2px;
     display: flex;
     justify-content: right;
-  }  
+  } 
+  
+  .mat-elevation-z8{
+    overflow-x: auto;
+  }

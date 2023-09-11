@@ -41,3 +41,7 @@ td, th {
   height: 70vh; /* Add this to limit the table's height and enable scrolling */
 }
 
+.mat-elevation-z8{
+  overflow-x: auto;
+}
+
