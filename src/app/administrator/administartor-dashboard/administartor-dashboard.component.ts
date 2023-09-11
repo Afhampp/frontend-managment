@@ -47,7 +47,7 @@ export class AdministartorDashboardComponent implements OnInit {
         datasets: [
           {
             data: this.graphvalue,
-            backgroundColor: ['#ff9c00', '#6326c1', '#13b8bc', '#b1b1b1'], // Example colors for the slices
+            backgroundColor: ['#ff9c00', '#6326c1', '#13b8bc', '#b1b1b1'],
             borderWidth: 1,
           },
         ],

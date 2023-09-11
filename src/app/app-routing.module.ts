@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StudentLoginComponent } from './student/student-login/student-login.component';
-import { TeacherLoginComponent } from './teacher/teacher-login/teacher-login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 
