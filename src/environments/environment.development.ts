@@ -1,8 +1,8 @@
 export const environment = {
     production: false,
-    studentUrl: 'https://www.backendcollage.online/student/',
-    teacherUrl:'https://www.backendcollage.online/teacher/',
-    socketUrl: 'https://www.backendcollage.online/',
-    adminUrl: 'https://www.backendcollage.online/admin/'
+    studentUrl: 'https://collage-backend.onrender.com/student/',
+    teacherUrl:'https://collage-backend.onrender.com/teacher/',
+    socketUrl: 'https://collage-backend.onrender.com/',
+    adminUrl: 'https://collage-backend.onrender.com/admin/'
   };
   
